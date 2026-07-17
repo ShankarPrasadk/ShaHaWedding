@@ -73,13 +73,13 @@ function initEnvelopeParticles() {
     const container = document.getElementById('env-particles');
     if (!container) return;
 
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 25; i++) {
         const particle = document.createElement('div');
         particle.classList.add('env-particle');
         const left = Math.random() * 100;
-        const size = Math.random() * 3 + 2;
-        const duration = Math.random() * 8 + 6;
-        const delay = Math.random() * 10;
+        const size = Math.random() * 4 + 2;
+        const duration = Math.random() * 6 + 4;
+        const delay = Math.random() * 8;
         particle.style.cssText = `
             left: ${left}%;
             bottom: -10px;

@@ -127,12 +127,12 @@ body::before {
 
 @keyframes vineSwayLeft {
     0%, 100% { transform: rotate(0deg) scale(1); }
-    50% { transform: rotate(0.8deg) scale(1.01); }
+    50% { transform: rotate(2deg) scale(1.02); }
 }
 
 @keyframes vineSwayRight {
     0%, 100% { transform: rotate(0deg) scale(1); }
-    50% { transform: rotate(-0.8deg) scale(1.01); }
+    50% { transform: rotate(-2deg) scale(1.02); }
 }
 
 /* ---- Individual flower & leaf sway animations ---- */
@@ -161,23 +161,24 @@ body::before {
 
 /* Leaf flutter — safe on path elements (no inline transform to conflict) */
 @keyframes leafFlutter1 {
-    0%, 100% { transform: rotate(0deg) scale(1); }
-    25% { transform: rotate(4deg) scale(1.03); }
-    50% { transform: rotate(-2deg) scale(0.98); }
-    75% { transform: rotate(3deg) scale(1.02); }
+    0%, 100% { transform: rotate(0deg) translateX(0) scale(1); }
+    20% { transform: rotate(8deg) translateX(3px) scale(1.05); }
+    40% { transform: rotate(-4deg) translateX(-2px) scale(0.97); }
+    60% { transform: rotate(6deg) translateX(2px) scale(1.03); }
+    80% { transform: rotate(-3deg) translateX(-1px) scale(0.99); }
 }
 
 @keyframes leafFlutter2 {
-    0%, 100% { transform: rotate(0deg) scale(1); }
-    30% { transform: rotate(-5deg) scale(1.04); }
-    60% { transform: rotate(3deg) scale(0.97); }
-    85% { transform: rotate(-2deg) scale(1.01); }
+    0%, 100% { transform: rotate(0deg) translateY(0) scale(1); }
+    25% { transform: rotate(-10deg) translateY(-3px) scale(1.06); }
+    50% { transform: rotate(5deg) translateY(2px) scale(0.96); }
+    75% { transform: rotate(-6deg) translateY(-2px) scale(1.04); }
 }
 
 /* Gold dot twinkle */
 @keyframes dotTwinkle {
-    0%, 100% { opacity: 0.3; transform: scale(1); }
-    50% { opacity: 0.7; transform: scale(1.4); }
+    0%, 100% { opacity: 0.25; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.8); }
 }
 
 /* --- Side corner floral animations (bg-decor) --- */
@@ -186,13 +187,13 @@ body::before {
 
 /* Leaves in corner SVGs (paths with no inline transform) */
 .decor-corner g[fill="#7ba05b"] path:nth-child(odd) {
-    animation: leafFlutter1 5s ease-in-out infinite;
+    animation: leafFlutter1 4s ease-in-out infinite;
     transform-origin: center;
     transform-box: fill-box;
 }
 
 .decor-corner g[fill="#7ba05b"] path:nth-child(even) {
-    animation: leafFlutter2 6s ease-in-out infinite 0.3s;
+    animation: leafFlutter2 4.5s ease-in-out infinite 0.3s;
     transform-origin: center;
     transform-box: fill-box;
 }
@@ -249,41 +250,41 @@ body::before {
 
 @keyframes cardFloralSwayTL {
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(3px, 2px) rotate(1.5deg); }
-    50% { transform: translate(-2px, 4px) rotate(-1deg); }
-    75% { transform: translate(2px, 1px) rotate(0.5deg); }
+    25% { transform: translate(5px, 3px) rotate(2.5deg); }
+    50% { transform: translate(-3px, 6px) rotate(-1.5deg); }
+    75% { transform: translate(4px, 2px) rotate(1deg); }
 }
 
 @keyframes cardFloralSwayTR {
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(-3px, 2px) rotate(-1.5deg); }
-    50% { transform: translate(2px, 4px) rotate(1deg); }
-    75% { transform: translate(-2px, 1px) rotate(-0.5deg); }
+    25% { transform: translate(-5px, 3px) rotate(-2.5deg); }
+    50% { transform: translate(3px, 6px) rotate(1.5deg); }
+    75% { transform: translate(-4px, 2px) rotate(-1deg); }
 }
 
 @keyframes cardFloralSwayBL {
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(3px, -2px) rotate(1deg); }
-    50% { transform: translate(-2px, -4px) rotate(-1.5deg); }
-    75% { transform: translate(1px, -1px) rotate(0.5deg); }
+    25% { transform: translate(5px, -3px) rotate(2deg); }
+    50% { transform: translate(-3px, -6px) rotate(-2.5deg); }
+    75% { transform: translate(2px, -2px) rotate(1deg); }
 }
 
 @keyframes cardFloralSwayBR {
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
-    25% { transform: translate(-3px, -2px) rotate(-1deg); }
-    50% { transform: translate(2px, -4px) rotate(1.5deg); }
-    75% { transform: translate(-1px, -1px) rotate(-0.5deg); }
+    25% { transform: translate(-5px, -3px) rotate(-2deg); }
+    50% { transform: translate(3px, -6px) rotate(2.5deg); }
+    75% { transform: translate(-2px, -2px) rotate(-1deg); }
 }
 
 /* Inner card leaves (paths without inline transforms — safe to animate) */
 .card-floral path[fill="#7ba05b"]:nth-of-type(odd) {
-    animation: leafFlutter1 6s ease-in-out infinite;
+    animation: leafFlutter1 4s ease-in-out infinite;
     transform-origin: center;
     transform-box: fill-box;
 }
 
 .card-floral path[fill="#7ba05b"]:nth-of-type(even) {
-    animation: leafFlutter2 7s ease-in-out infinite 0.5s;
+    animation: leafFlutter2 4.5s ease-in-out infinite 0.5s;
     transform-origin: center;
     transform-box: fill-box;
 }
@@ -314,19 +315,35 @@ body::before {
 /* --- Envelope screen floral animations --- */
 /* Only animate leaves & dots — not <g> elements with inline transforms */
 
+.env-floral {
+    animation: vineSwayLeft 8s ease-in-out infinite;
+}
+
+.env-floral-tr {
+    animation: vineSwayRight 9s ease-in-out infinite 0.5s;
+}
+
+.env-floral-bl {
+    animation: vineSwayRight 10s ease-in-out infinite 1s;
+}
+
+.env-floral-br {
+    animation: vineSwayLeft 9.5s ease-in-out infinite 1.5s;
+}
+
 .env-floral path[fill="#7ba05b"] {
-    animation: leafFlutter1 5s ease-in-out infinite;
+    animation: leafFlutter1 3.5s ease-in-out infinite;
     transform-origin: center;
     transform-box: fill-box;
 }
 
 .env-floral-tr path[fill="#7ba05b"],
 .env-floral-br path[fill="#7ba05b"] {
-    animation: leafFlutter2 5.5s ease-in-out infinite 0.4s;
+    animation: leafFlutter2 4s ease-in-out infinite 0.4s;
 }
 
 .env-floral circle[fill="#d4af37"] {
-    animation: dotTwinkle 3s ease-in-out infinite;
+    animation: dotTwinkle 2.5s ease-in-out infinite;
 }
 
 /* Reduce motion for accessibility */
@@ -446,13 +463,19 @@ body::before {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, 
-        #f5eff7 0%, 
-        #fce4ec 25%, 
-        #fff8f0 50%, 
-        #ece3f5 75%,
-        #fce4ec 100%
-    );
+    background: 
+        radial-gradient(ellipse at 20% 30%, rgba(240, 160, 184, 0.18) 0%, transparent 45%),
+        radial-gradient(ellipse at 80% 20%, rgba(212, 160, 208, 0.15) 0%, transparent 40%),
+        radial-gradient(ellipse at 75% 75%, rgba(240, 180, 196, 0.16) 0%, transparent 45%),
+        radial-gradient(ellipse at 25% 80%, rgba(234, 208, 240, 0.14) 0%, transparent 40%),
+        radial-gradient(ellipse at 50% 50%, rgba(212, 175, 55, 0.06) 0%, transparent 50%),
+        linear-gradient(135deg, 
+            #f5eff7 0%, 
+            #fce4ec 25%, 
+            #fff8f0 50%, 
+            #ece3f5 75%,
+            #fce4ec 100%
+        );
     z-index: 9999;
     cursor: pointer;
     overflow: hidden;
@@ -466,9 +489,12 @@ body::before {
     width: 100%;
     height: 100%;
     background: 
-        radial-gradient(ellipse at 30% 20%, rgba(240, 160, 184, 0.12) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 80%, rgba(212, 160, 208, 0.10) 0%, transparent 50%),
-        radial-gradient(ellipse at center, rgba(212, 175, 55, 0.06) 0%, transparent 60%);
+        radial-gradient(circle at 10% 20%, rgba(240, 160, 184, 0.20) 0%, transparent 25%),
+        radial-gradient(circle at 90% 15%, rgba(212, 160, 208, 0.18) 0%, transparent 25%),
+        radial-gradient(circle at 15% 85%, rgba(212, 160, 208, 0.16) 0%, transparent 25%),
+        radial-gradient(circle at 85% 80%, rgba(240, 160, 184, 0.18) 0%, transparent 25%),
+        radial-gradient(circle at 50% 10%, rgba(201, 169, 110, 0.08) 0%, transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(201, 169, 110, 0.06) 0%, transparent 30%);
 }
 
 .envelope-screen::after {
@@ -479,8 +505,8 @@ body::before {
     width: 100%;
     height: 100%;
     background: 
-        repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(212, 175, 55, 0.015) 40px, rgba(212, 175, 55, 0.015) 42px),
-        repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(212, 175, 55, 0.015) 40px, rgba(212, 175, 55, 0.015) 42px);
+        repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(212, 175, 55, 0.025) 35px, rgba(212, 175, 55, 0.025) 37px),
+        repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(212, 175, 55, 0.025) 35px, rgba(212, 175, 55, 0.025) 37px);
     pointer-events: none;
 }
 
@@ -497,14 +523,14 @@ body::before {
 
 .env-floral {
     position: absolute;
-    width: 180px;
-    height: 180px;
+    width: 220px;
+    height: 220px;
 }
 
-.env-floral-tl { top: -10px; left: -10px; }
-.env-floral-tr { top: -10px; right: -10px; }
-.env-floral-bl { bottom: -10px; left: -10px; }
-.env-floral-br { bottom: -10px; right: -10px; }
+.env-floral-tl { top: -20px; left: -20px; }
+.env-floral-tr { top: -20px; right: -20px; }
+.env-floral-bl { bottom: -20px; left: -20px; }
+.env-floral-br { bottom: -20px; right: -20px; }
 
 /* Floating particles on envelope screen */
 .env-particles {
@@ -552,8 +578,8 @@ body::before {
 }
 
 .envelope-ring {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
+    font-size: 3rem;
+    margin-bottom: 12px;
     animation: ring-float 3s ease-in-out infinite;
     filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.35));
 }
@@ -567,7 +593,7 @@ body::before {
     font-family: var(--font-display);
     font-size: 1.8rem;
     color: var(--royal-purple);
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     opacity: 0.9;
     text-shadow: 0 2px 8px rgba(92, 61, 110, 0.1);
     animation: fadeInUp 1s ease 0.3s both;
@@ -576,15 +602,15 @@ body::before {
 /* 3D Perspective Envelope */
 .envelope-perspective {
     perspective: 800px;
-    margin: 0 auto 30px;
+    margin: 0 auto 20px;
     width: 300px;
-    height: 210px;
+    height: 200px;
 }
 
 .envelope {
     position: relative;
     width: 300px;
-    height: 210px;
+    height: 200px;
     filter: drop-shadow(0 20px 50px rgba(107, 76, 122, 0.18))
             drop-shadow(0 8px 20px rgba(201, 169, 110, 0.12));
     transform-style: preserve-3d;
@@ -594,7 +620,7 @@ body::before {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 160px;
+    height: 150px;
     background: linear-gradient(165deg, #fffdf8 0%, #fff5f8 50%, #fef0f2 100%);
     border-radius: 4px 4px 16px 16px;
     border: 2px solid var(--gold-light);
@@ -629,7 +655,7 @@ body::before {
     top: 0;
     left: 0;
     width: 100%;
-    height: 120px;
+    height: 100px;
     transform-origin: top center;
     transform-style: preserve-3d;
     z-index: 2;
@@ -645,7 +671,7 @@ body::before {
     height: 100%;
     background: linear-gradient(165deg, #fffdf8 0%, #fef5f8 50%, #fef0f2 100%);
     border: 2px solid var(--gold-light);
-    clip-path: polygon(0 0, 50% 80%, 100% 0);
+    clip-path: polygon(0 0, 50% 90%, 100% 0);
     backface-visibility: hidden;
 }
 
@@ -657,7 +683,7 @@ body::before {
     height: 100%;
     background: linear-gradient(165deg, #f0e8f5 0%, #ead0e0 50%, #e8c8d5 100%);
     border: 2px solid var(--gold-light);
-    clip-path: polygon(0 0, 50% 80%, 100% 0);
+    clip-path: polygon(0 0, 50% 90%, 100% 0);
     transform: rotateX(180deg);
     backface-visibility: hidden;
 }
@@ -670,7 +696,7 @@ body::before {
     right: 8px;
     height: 100%;
     background: linear-gradient(135deg, transparent 35%, rgba(212, 175, 55, 0.08) 100%);
-    clip-path: polygon(0 0, 50% 78%, 100% 0);
+    clip-path: polygon(0 0, 50% 88%, 100% 0);
     pointer-events: none;
     backface-visibility: hidden;
 }
@@ -678,7 +704,7 @@ body::before {
 /* Wax seal */
 .envelope-seal {
     position: absolute;
-    top: 38%;
+    top: 32%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 3;
@@ -694,11 +720,11 @@ body::before {
 /* Letter inside envelope */
 .envelope-letter {
     position: absolute;
-    bottom: 14px;
+    bottom: 10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 80%;
-    height: 115px;
+    width: 82%;
+    height: 108px;
     background: linear-gradient(180deg, #ffffff 0%, #fefbf8 100%);
     border-radius: 8px;
     border: 1px solid rgba(201, 169, 110, 0.35);
