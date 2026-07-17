@@ -444,17 +444,18 @@ body::before {
     transform: rotateX(var(--bf-tilt, 60deg)) rotateY(var(--bf-yaw, -12deg));
 }
 
-/* Wing flap: the wings fold up toward the body hinge (x=50). Combined with the 3D tilt
-   above, the near wing sweeps forward and the far wing recedes — a real side-angle beat. */
+/* Wing flap: each wing folds around its OWN hinge (the body-side edge = right edge
+   of its fill-box). Using fill-box keeps both wings symmetric regardless of the
+   mirrored parent group, so both wings always stay visible through the beat. */
 .bf-wing {
-    transform-box: view-box;
-    transform-origin: 50px 45px;
+    transform-box: fill-box;
+    transform-origin: 100% 42%;
     animation: bf-flap var(--flap-dur, 0.24s) cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
 }
 
 @keyframes bf-flap {
     0%   { transform: scaleX(1)    translateY(0); }
-    100% { transform: scaleX(0.12) translateY(-2px); }
+    100% { transform: scaleX(0.28) translateY(-1px); }
 }
 
 /* Left-to-right flight with gentle bobbing */
