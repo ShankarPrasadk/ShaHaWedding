@@ -4,6 +4,7 @@
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
+    initWatercolorBg();
     initEnvelope();
     initPetals();
     initSparkles();
@@ -12,6 +13,58 @@ document.addEventListener('DOMContentLoaded', () => {
     initActions();
     initMusic();
 });
+
+/* ============ WATERCOLOR BACKGROUND ============ */
+
+function initWatercolorBg() {
+    const canvas = document.getElementById('watercolor-bg');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        draw();
+    }
+
+    function draw() {
+        const w = canvas.width;
+        const h = canvas.height;
+        ctx.clearRect(0, 0, w, h);
+
+        // Soft watercolor blobs
+        const blobs = [
+            { x: 0.08, y: 0.10, r: 0.22, color: 'rgba(240,160,184,0.12)' },
+            { x: 0.90, y: 0.08, r: 0.20, color: 'rgba(212,160,208,0.10)' },
+            { x: 0.05, y: 0.55, r: 0.18, color: 'rgba(232,213,240,0.10)' },
+            { x: 0.92, y: 0.50, r: 0.16, color: 'rgba(240,160,184,0.08)' },
+            { x: 0.10, y: 0.88, r: 0.20, color: 'rgba(212,160,208,0.10)' },
+            { x: 0.88, y: 0.85, r: 0.18, color: 'rgba(240,160,184,0.10)' },
+            { x: 0.50, y: 0.50, r: 0.30, color: 'rgba(201,169,110,0.03)' },
+            { x: 0.30, y: 0.30, r: 0.15, color: 'rgba(242,198,208,0.08)' },
+            { x: 0.70, y: 0.70, r: 0.15, color: 'rgba(232,213,240,0.08)' },
+            { x: 0.15, y: 0.35, r: 0.12, color: 'rgba(240,180,196,0.07)' },
+            { x: 0.85, y: 0.30, r: 0.14, color: 'rgba(220,170,220,0.07)' },
+            { x: 0.20, y: 0.70, r: 0.13, color: 'rgba(240,180,196,0.06)' },
+            { x: 0.80, y: 0.65, r: 0.12, color: 'rgba(220,170,220,0.06)' },
+        ];
+
+        blobs.forEach(blob => {
+            const gradient = ctx.createRadialGradient(
+                blob.x * w, blob.y * h, 0,
+                blob.x * w, blob.y * h, blob.r * Math.max(w, h)
+            );
+            gradient.addColorStop(0, blob.color);
+            gradient.addColorStop(0.6, blob.color.replace(/[\d.]+\)$/, '0.02)'));
+            gradient.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, w, h);
+        });
+    }
+
+    resize();
+    window.addEventListener('resize', resize);
+}
 
 /* ============ ENVELOPE OPENING ============ */
 

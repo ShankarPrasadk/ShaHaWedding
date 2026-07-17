@@ -21,247 +21,181 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <!-- Watercolor Canvas Background -->
+    <canvas id="watercolor-bg" class="watercolor-canvas"></canvas>
+
     <!-- Background Decorative Elements -->
     <div class="bg-decor">
         <!-- ===== TOP-LEFT FLORAL CORNER ===== -->
-        <svg class="decor-corner decor-top-left" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
+        <svg class="decor-corner decor-top-left" viewBox="0 0 350 500" xmlns="http://www.w3.org/2000/svg">
+            <!-- Watercolor washes -->
+            <ellipse cx="60" cy="80" r="100" ry="90" fill="#f2c6d0" opacity="0.22" />
+            <ellipse cx="30" cy="200" r="80" ry="70" fill="#e8d5f0" opacity="0.18" />
+            <ellipse cx="70" cy="350" r="90" ry="80" fill="#f2c6d0" opacity="0.15" />
             <!-- Main curving vine -->
-            <path d="M-10 -10 Q30 40 25 100 Q20 160 50 200 Q70 230 55 280 Q40 330 60 380" fill="none" stroke="#d4af37" stroke-width="1.2" opacity="0.25"/>
-            <path d="M-10 20 Q50 60 45 130 Q40 190 70 230 Q90 260 75 310" fill="none" stroke="#c9a96e" stroke-width="0.8" opacity="0.15"/>
-            <!-- Large roses -->
-            <g opacity="0.12">
-                <circle cx="35" cy="80" r="22" fill="#e8a0b4"/>
-                <path d="M25 72 Q35 60 45 72 Q35 84 25 72Z" fill="#d4849c"/>
-                <path d="M20 80 Q35 65 50 80 Q35 95 20 80Z" fill="#e8a0b4"/>
-                <path d="M28 88 Q35 75 42 88 Q35 98 28 88Z" fill="#d4849c"/>
-                <circle cx="35" cy="80" r="5" fill="#c9708a"/>
+            <path d="M-10 -10 Q40 50 35 130 Q28 200 65 260 Q90 310 70 380 Q55 430 75 490" fill="none" stroke="#b8943f" stroke-width="1.8" opacity="0.35"/>
+            <path d="M5 30 Q55 80 50 160 Q45 230 80 280 Q95 320 85 390" fill="none" stroke="#c9a96e" stroke-width="1" opacity="0.2"/>
+            <!-- Large rose 1 -->
+            <g opacity="0.45" transform="translate(40,90)">
+                <circle cx="0" cy="0" r="30" fill="#f0a0b8"/>
+                <ellipse cx="-8" cy="-8" rx="18" ry="14" fill="#e8889e" transform="rotate(-20)"/>
+                <ellipse cx="8" cy="-5" rx="16" ry="12" fill="#f4b0c4" transform="rotate(15)"/>
+                <ellipse cx="0" cy="8" rx="14" ry="10" fill="#e8889e" transform="rotate(5)"/>
+                <ellipse cx="-5" cy="2" rx="10" ry="8" fill="#d87090" transform="rotate(-10)"/>
+                <circle cx="0" cy="0" r="6" fill="#c86080"/>
+                <circle cx="0" cy="0" r="3" fill="#b85070"/>
             </g>
-            <g opacity="0.10">
-                <circle cx="55" cy="190" r="18" fill="#d4a0c8"/>
-                <path d="M47 183 Q55 173 63 183 Q55 193 47 183Z" fill="#c490b8"/>
-                <path d="M43 190 Q55 178 67 190 Q55 202 43 190Z" fill="#d4a0c8"/>
-                <circle cx="55" cy="190" r="4" fill="#b480a8"/>
+            <!-- Large rose 2 -->
+            <g opacity="0.35" transform="translate(60,230)">
+                <circle cx="0" cy="0" r="25" fill="#d4a0d0"/>
+                <ellipse cx="-6" cy="-6" rx="15" ry="11" fill="#c490c0" transform="rotate(-25)"/>
+                <ellipse cx="6" cy="-4" rx="13" ry="10" fill="#d8aad4" transform="rotate(20)"/>
+                <ellipse cx="0" cy="6" rx="11" ry="8" fill="#c490c0" transform="rotate(10)"/>
+                <circle cx="0" cy="0" r="5" fill="#b480b0"/>
+                <circle cx="0" cy="0" r="2.5" fill="#a070a0"/>
             </g>
-            <g opacity="0.08">
-                <circle cx="40" cy="300" r="15" fill="#e8a0b4"/>
-                <path d="M33 293 Q40 284 47 293 Q40 302 33 293Z" fill="#d4849c"/>
-                <path d="M30 300 Q40 290 50 300 Q40 310 30 300Z" fill="#e8a0b4"/>
-                <circle cx="40" cy="300" r="3.5" fill="#c9708a"/>
+            <!-- Small rose 3 -->
+            <g opacity="0.30" transform="translate(45,370)">
+                <circle cx="0" cy="0" r="20" fill="#f0a0b8"/>
+                <ellipse cx="-5" cy="-5" rx="12" ry="9" fill="#e8889e" transform="rotate(-15)"/>
+                <ellipse cx="5" cy="-3" rx="10" ry="8" fill="#f4b0c4" transform="rotate(10)"/>
+                <circle cx="0" cy="0" r="4" fill="#d87090"/>
             </g>
-            <!-- Leaves along the vine -->
-            <path d="M15 50 Q5 40 20 35 Q25 48 15 50Z" fill="#8baa6b" opacity="0.12"/>
-            <path d="M40 50 Q50 38 52 52 Q42 56 40 50Z" fill="#8baa6b" opacity="0.10"/>
-            <path d="M10 140 Q0 128 18 125 Q20 140 10 140Z" fill="#8baa6b" opacity="0.10"/>
-            <path d="M50 140 Q62 130 60 148 Q48 148 50 140Z" fill="#8baa6b" opacity="0.08"/>
-            <path d="M60 240 Q72 228 72 246 Q58 248 60 240Z" fill="#8baa6b" opacity="0.10"/>
-            <path d="M30 250 Q20 238 35 236 Q38 250 30 250Z" fill="#8baa6b" opacity="0.08"/>
-            <path d="M50 340 Q62 328 62 346 Q48 348 50 340Z" fill="#8baa6b" opacity="0.08"/>
+            <!-- Peony bud -->
+            <g opacity="0.35" transform="translate(20,160)">
+                <ellipse cx="0" cy="0" rx="12" ry="16" fill="#f0a0b8"/>
+                <ellipse cx="0" cy="-4" rx="8" ry="10" fill="#e8889e"/>
+                <ellipse cx="0" cy="-6" rx="4" ry="7" fill="#d87090"/>
+            </g>
+            <!-- Leaves -->
+            <g fill="#7ba05b">
+                <path d="M10 55 Q-8 40 15 30 Q22 50 10 55Z" opacity="0.35"/>
+                <path d="M65 55 Q80 38 82 58 Q68 65 65 55Z" opacity="0.30"/>
+                <path d="M5 170 Q-12 155 12 148 Q18 168 5 170Z" opacity="0.28"/>
+                <path d="M75 170 Q90 155 88 175 Q72 180 75 170Z" opacity="0.25"/>
+                <path d="M80 290 Q95 275 95 298 Q78 302 80 290Z" opacity="0.28"/>
+                <path d="M30 310 Q15 295 35 290 Q40 312 30 310Z" opacity="0.22"/>
+                <path d="M60 420 Q75 405 75 428 Q58 432 60 420Z" opacity="0.22"/>
+                <path d="M25 400 Q10 385 30 382 Q34 402 25 400Z" opacity="0.18"/>
+            </g>
             <!-- Small buds -->
-            <circle cx="18" cy="45" r="4" fill="#e8a0b4" opacity="0.15"/>
-            <circle cx="48" cy="45" r="3" fill="#d4a0c8" opacity="0.12"/>
-            <circle cx="12" cy="135" r="3.5" fill="#e8a0b4" opacity="0.12"/>
-            <circle cx="65" cy="245" r="3" fill="#d4a0c8" opacity="0.10"/>
-            <circle cx="28" cy="245" r="4" fill="#e8a0b4" opacity="0.10"/>
-            <!-- Gold dots / dewdrops -->
-            <circle cx="35" cy="30" r="1.5" fill="#d4af37" opacity="0.25"/>
-            <circle cx="22" cy="110" r="1.5" fill="#d4af37" opacity="0.2"/>
-            <circle cx="60" cy="160" r="1" fill="#d4af37" opacity="0.2"/>
-            <circle cx="45" cy="260" r="1.5" fill="#d4af37" opacity="0.15"/>
-            <circle cx="30" cy="350" r="1" fill="#d4af37" opacity="0.15"/>
+            <circle cx="15" cy="48" r="7" fill="#f0a0b8" opacity="0.35"/>
+            <circle cx="70" cy="50" r="5" fill="#d4a0d0" opacity="0.30"/>
+            <circle cx="8" cy="160" r="6" fill="#f0a0b8" opacity="0.30"/>
+            <circle cx="85" cy="290" r="5" fill="#d4a0d0" opacity="0.25"/>
+            <circle cx="25" cy="310" r="6" fill="#f0a0b8" opacity="0.22"/>
+            <!-- Gold dots -->
+            <circle cx="40" cy="35" r="2" fill="#d4af37" opacity="0.35"/>
+            <circle cx="25" cy="130" r="2" fill="#d4af37" opacity="0.30"/>
+            <circle cx="70" cy="195" r="1.5" fill="#d4af37" opacity="0.28"/>
+            <circle cx="50" cy="330" r="2" fill="#d4af37" opacity="0.22"/>
         </svg>
 
         <!-- ===== TOP-RIGHT FLORAL CORNER (mirrored) ===== -->
-        <svg class="decor-corner decor-top-right" viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg">
-            <path d="M310 -10 Q270 40 275 100 Q280 160 250 200 Q230 230 245 280 Q260 330 240 380" fill="none" stroke="#d4af37" stroke-width="1.2" opacity="0.25"/>
-            <path d="M310 20 Q250 60 255 130 Q260 190 230 230 Q210 260 225 310" fill="none" stroke="#c9a96e" stroke-width="0.8" opacity="0.15"/>
-            <g opacity="0.12">
-                <circle cx="265" cy="80" r="22" fill="#e8a0b4"/>
-                <path d="M255 72 Q265 60 275 72 Q265 84 255 72Z" fill="#d4849c"/>
-                <path d="M250 80 Q265 65 280 80 Q265 95 250 80Z" fill="#e8a0b4"/>
-                <path d="M258 88 Q265 75 272 88 Q265 98 258 88Z" fill="#d4849c"/>
-                <circle cx="265" cy="80" r="5" fill="#c9708a"/>
+        <svg class="decor-corner decor-top-right" viewBox="0 0 350 500" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="290" cy="80" r="100" ry="90" fill="#f2c6d0" opacity="0.22" />
+            <ellipse cx="320" cy="200" r="80" ry="70" fill="#e8d5f0" opacity="0.18" />
+            <ellipse cx="280" cy="350" r="90" ry="80" fill="#f2c6d0" opacity="0.15" />
+            <path d="M360 -10 Q310 50 315 130 Q322 200 285 260 Q260 310 280 380 Q295 430 275 490" fill="none" stroke="#b8943f" stroke-width="1.8" opacity="0.35"/>
+            <path d="M345 30 Q295 80 300 160 Q305 230 270 280 Q255 320 265 390" fill="none" stroke="#c9a96e" stroke-width="1" opacity="0.2"/>
+            <g opacity="0.45" transform="translate(310,90)">
+                <circle cx="0" cy="0" r="30" fill="#f0a0b8"/>
+                <ellipse cx="-8" cy="-8" rx="18" ry="14" fill="#e8889e" transform="rotate(-20)"/>
+                <ellipse cx="8" cy="-5" rx="16" ry="12" fill="#f4b0c4" transform="rotate(15)"/>
+                <ellipse cx="0" cy="8" rx="14" ry="10" fill="#e8889e" transform="rotate(5)"/>
+                <ellipse cx="-5" cy="2" rx="10" ry="8" fill="#d87090" transform="rotate(-10)"/>
+                <circle cx="0" cy="0" r="6" fill="#c86080"/>
+                <circle cx="0" cy="0" r="3" fill="#b85070"/>
             </g>
-            <g opacity="0.10">
-                <circle cx="245" cy="190" r="18" fill="#d4a0c8"/>
-                <path d="M237 183 Q245 173 253 183 Q245 193 237 183Z" fill="#c490b8"/>
-                <path d="M233 190 Q245 178 257 190 Q245 202 233 190Z" fill="#d4a0c8"/>
-                <circle cx="245" cy="190" r="4" fill="#b480a8"/>
+            <g opacity="0.35" transform="translate(290,230)">
+                <circle cx="0" cy="0" r="25" fill="#d4a0d0"/>
+                <ellipse cx="-6" cy="-6" rx="15" ry="11" fill="#c490c0" transform="rotate(-25)"/>
+                <ellipse cx="6" cy="-4" rx="13" ry="10" fill="#d8aad4" transform="rotate(20)"/>
+                <ellipse cx="0" cy="6" rx="11" ry="8" fill="#c490c0" transform="rotate(10)"/>
+                <circle cx="0" cy="0" r="5" fill="#b480b0"/>
+                <circle cx="0" cy="0" r="2.5" fill="#a070a0"/>
             </g>
-            <g opacity="0.08">
-                <circle cx="260" cy="300" r="15" fill="#e8a0b4"/>
-                <path d="M253 293 Q260 284 267 293 Q260 302 253 293Z" fill="#d4849c"/>
-                <path d="M250 300 Q260 290 270 300 Q260 310 250 300Z" fill="#e8a0b4"/>
-                <circle cx="260" cy="300" r="3.5" fill="#c9708a"/>
+            <g opacity="0.30" transform="translate(305,370)">
+                <circle cx="0" cy="0" r="20" fill="#f0a0b8"/>
+                <ellipse cx="-5" cy="-5" rx="12" ry="9" fill="#e8889e" transform="rotate(-15)"/>
+                <ellipse cx="5" cy="-3" rx="10" ry="8" fill="#f4b0c4" transform="rotate(10)"/>
+                <circle cx="0" cy="0" r="4" fill="#d87090"/>
             </g>
-            <path d="M285 50 Q295 40 280 35 Q275 48 285 50Z" fill="#8baa6b" opacity="0.12"/>
-            <path d="M260 50 Q250 38 248 52 Q258 56 260 50Z" fill="#8baa6b" opacity="0.10"/>
-            <path d="M290 140 Q300 128 282 125 Q280 140 290 140Z" fill="#8baa6b" opacity="0.10"/>
-            <path d="M250 140 Q238 130 240 148 Q252 148 250 140Z" fill="#8baa6b" opacity="0.08"/>
-            <path d="M240 240 Q228 228 228 246 Q242 248 240 240Z" fill="#8baa6b" opacity="0.10"/>
-            <path d="M270 250 Q280 238 265 236 Q262 250 270 250Z" fill="#8baa6b" opacity="0.08"/>
-            <circle cx="282" cy="45" r="4" fill="#e8a0b4" opacity="0.15"/>
-            <circle cx="252" cy="45" r="3" fill="#d4a0c8" opacity="0.12"/>
-            <circle cx="288" cy="135" r="3.5" fill="#e8a0b4" opacity="0.12"/>
-            <circle cx="235" cy="245" r="3" fill="#d4a0c8" opacity="0.10"/>
-            <circle cx="265" cy="30" r="1.5" fill="#d4af37" opacity="0.25"/>
-            <circle cx="278" cy="110" r="1.5" fill="#d4af37" opacity="0.2"/>
-            <circle cx="240" cy="160" r="1" fill="#d4af37" opacity="0.2"/>
-            <circle cx="255" cy="260" r="1.5" fill="#d4af37" opacity="0.15"/>
+            <g opacity="0.35" transform="translate(330,160)">
+                <ellipse cx="0" cy="0" rx="12" ry="16" fill="#f0a0b8"/>
+                <ellipse cx="0" cy="-4" rx="8" ry="10" fill="#e8889e"/>
+                <ellipse cx="0" cy="-6" rx="4" ry="7" fill="#d87090"/>
+            </g>
+            <g fill="#7ba05b">
+                <path d="M340 55 Q358 40 335 30 Q328 50 340 55Z" opacity="0.35"/>
+                <path d="M285 55 Q270 38 268 58 Q282 65 285 55Z" opacity="0.30"/>
+                <path d="M345 170 Q362 155 338 148 Q332 168 345 170Z" opacity="0.28"/>
+                <path d="M275 170 Q260 155 262 175 Q278 180 275 170Z" opacity="0.25"/>
+                <path d="M270 290 Q255 275 255 298 Q272 302 270 290Z" opacity="0.28"/>
+                <path d="M320 310 Q335 295 315 290 Q310 312 320 310Z" opacity="0.22"/>
+                <path d="M290 420 Q275 405 275 428 Q292 432 290 420Z" opacity="0.22"/>
+            </g>
+            <circle cx="335" cy="48" r="7" fill="#f0a0b8" opacity="0.35"/>
+            <circle cx="280" cy="50" r="5" fill="#d4a0d0" opacity="0.30"/>
+            <circle cx="342" cy="160" r="6" fill="#f0a0b8" opacity="0.30"/>
+            <circle cx="265" cy="290" r="5" fill="#d4a0d0" opacity="0.25"/>
+            <circle cx="310" cy="35" r="2" fill="#d4af37" opacity="0.35"/>
+            <circle cx="325" cy="130" r="2" fill="#d4af37" opacity="0.30"/>
+            <circle cx="280" cy="195" r="1.5" fill="#d4af37" opacity="0.28"/>
         </svg>
 
         <!-- ===== BOTTOM-LEFT FLORAL CORNER ===== -->
-        <svg class="decor-corner decor-bottom-left" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
-            <path d="M-10 260 Q30 220 25 170 Q20 130 50 100 Q70 75 55 40" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.2"/>
-            <g opacity="0.10">
-                <circle cx="35" cy="170" r="18" fill="#e8a0b4"/>
-                <path d="M27 163 Q35 153 43 163 Q35 173 27 163Z" fill="#d4849c"/>
-                <path d="M23 170 Q35 158 47 170 Q35 182 23 170Z" fill="#e8a0b4"/>
-                <circle cx="35" cy="170" r="4" fill="#c9708a"/>
+        <svg class="decor-corner decor-bottom-left" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="50" cy="200" r="90" ry="80" fill="#f2c6d0" opacity="0.18"/>
+            <ellipse cx="80" cy="100" r="60" ry="55" fill="#e8d5f0" opacity="0.14"/>
+            <path d="M-10 310 Q35 260 30 200 Q25 155 60 120 Q85 90 70 50" fill="none" stroke="#b8943f" stroke-width="1.5" opacity="0.30"/>
+            <g opacity="0.38" transform="translate(40,200)">
+                <circle cx="0" cy="0" r="24" fill="#f0a0b8"/>
+                <ellipse cx="-6" cy="-6" rx="14" ry="11" fill="#e8889e" transform="rotate(-20)"/>
+                <ellipse cx="6" cy="-4" rx="12" ry="9" fill="#f4b0c4" transform="rotate(15)"/>
+                <circle cx="0" cy="0" r="5" fill="#d87090"/>
+                <circle cx="0" cy="0" r="2.5" fill="#c86080"/>
             </g>
-            <g opacity="0.08">
-                <circle cx="55" cy="80" r="14" fill="#d4a0c8"/>
-                <path d="M48 74 Q55 65 62 74 Q55 83 48 74Z" fill="#c490b8"/>
-                <circle cx="55" cy="80" r="3" fill="#b480a8"/>
+            <g opacity="0.28" transform="translate(70,100)">
+                <circle cx="0" cy="0" r="18" fill="#d4a0d0"/>
+                <ellipse cx="-5" cy="-5" rx="11" ry="8" fill="#c490c0" transform="rotate(-15)"/>
+                <circle cx="0" cy="0" r="4" fill="#b480b0"/>
             </g>
-            <path d="M15 210 Q5 198 22 196 Q24 212 15 210Z" fill="#8baa6b" opacity="0.10"/>
-            <path d="M45 120 Q55 108 56 126 Q44 128 45 120Z" fill="#8baa6b" opacity="0.08"/>
-            <circle cx="20" cy="205" r="3" fill="#e8a0b4" opacity="0.12"/>
-            <circle cx="50" cy="55" r="2.5" fill="#d4a0c8" opacity="0.10"/>
-            <circle cx="30" cy="140" r="1.5" fill="#d4af37" opacity="0.15"/>
+            <g fill="#7ba05b">
+                <path d="M18 250 Q5 235 25 230 Q28 252 18 250Z" opacity="0.30"/>
+                <path d="M58 145 Q70 130 72 152 Q56 156 58 145Z" opacity="0.25"/>
+                <path d="M80 70 Q92 55 90 78 Q76 82 80 70Z" opacity="0.22"/>
+            </g>
+            <circle cx="22" cy="248" r="5" fill="#f0a0b8" opacity="0.30"/>
+            <circle cx="75" cy="65" r="4" fill="#d4a0d0" opacity="0.25"/>
+            <circle cx="35" cy="165" r="2" fill="#d4af37" opacity="0.25"/>
         </svg>
 
         <!-- ===== BOTTOM-RIGHT FLORAL CORNER ===== -->
-        <svg class="decor-corner decor-bottom-right" viewBox="0 0 250 250" xmlns="http://www.w3.org/2000/svg">
-            <path d="M260 260 Q220 220 225 170 Q230 130 200 100 Q180 75 195 40" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.2"/>
-            <g opacity="0.10">
-                <circle cx="215" cy="170" r="18" fill="#e8a0b4"/>
-                <path d="M207 163 Q215 153 223 163 Q215 173 207 163Z" fill="#d4849c"/>
-                <path d="M203 170 Q215 158 227 170 Q215 182 203 170Z" fill="#e8a0b4"/>
-                <circle cx="215" cy="170" r="4" fill="#c9708a"/>
+        <svg class="decor-corner decor-bottom-right" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="250" cy="200" r="90" ry="80" fill="#f2c6d0" opacity="0.18"/>
+            <ellipse cx="220" cy="100" r="60" ry="55" fill="#e8d5f0" opacity="0.14"/>
+            <path d="M310 310 Q265 260 270 200 Q275 155 240 120 Q215 90 230 50" fill="none" stroke="#b8943f" stroke-width="1.5" opacity="0.30"/>
+            <g opacity="0.38" transform="translate(260,200)">
+                <circle cx="0" cy="0" r="24" fill="#f0a0b8"/>
+                <ellipse cx="-6" cy="-6" rx="14" ry="11" fill="#e8889e" transform="rotate(-20)"/>
+                <ellipse cx="6" cy="-4" rx="12" ry="9" fill="#f4b0c4" transform="rotate(15)"/>
+                <circle cx="0" cy="0" r="5" fill="#d87090"/>
+                <circle cx="0" cy="0" r="2.5" fill="#c86080"/>
             </g>
-            <g opacity="0.08">
-                <circle cx="195" cy="80" r="14" fill="#d4a0c8"/>
-                <path d="M188 74 Q195 65 202 74 Q195 83 188 74Z" fill="#c490b8"/>
-                <circle cx="195" cy="80" r="3" fill="#b480a8"/>
+            <g opacity="0.28" transform="translate(230,100)">
+                <circle cx="0" cy="0" r="18" fill="#d4a0d0"/>
+                <ellipse cx="-5" cy="-5" rx="11" ry="8" fill="#c490c0" transform="rotate(-15)"/>
+                <circle cx="0" cy="0" r="4" fill="#b480b0"/>
             </g>
-            <path d="M235 210 Q245 198 228 196 Q226 212 235 210Z" fill="#8baa6b" opacity="0.10"/>
-            <path d="M205 120 Q195 108 194 126 Q206 128 205 120Z" fill="#8baa6b" opacity="0.08"/>
-            <circle cx="230" cy="205" r="3" fill="#e8a0b4" opacity="0.12"/>
-            <circle cx="200" cy="55" r="2.5" fill="#d4a0c8" opacity="0.10"/>
-            <circle cx="220" cy="140" r="1.5" fill="#d4af37" opacity="0.15"/>
-        </svg>
-
-        <!-- ===== CENTER MANDALA WATERMARK ===== -->
-        <svg class="decor-mandala" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-            <g opacity="0.04" transform="translate(200,200)">
-                <!-- Outer ring -->
-                <circle cx="0" cy="0" r="180" fill="none" stroke="#c9a96e" stroke-width="1"/>
-                <circle cx="0" cy="0" r="170" fill="none" stroke="#c9a96e" stroke-width="0.5"/>
-                <!-- Petal ring outer -->
-                <g>
-                    <path d="M0 -160 Q25 -130 0 -100 Q-25 -130 0 -160Z" fill="#c9a96e"/>
-                    <path d="M0 -160 Q25 -130 0 -100 Q-25 -130 0 -160Z" fill="#c9a96e" transform="rotate(30)"/>
-                    <path d="M0 -160 Q25 -130 0 -100 Q-25 -130 0 -160Z" fill="#c9a96e" transform="rotate(60)"/>
-                    <path d="M0 -160 Q25 -130 0 -100 Q-25 -130 0 -160Z" fill="#c9a96e" transform="rotate(90)"/>
-                    <path d="M0 -160 Q25 -130 0 -100 Q-25 -130 0 -160Z" fill="#c9a96e" transform="rotate(120)"/>
-                    <path d="M0 -160 Q25 -130 0 -100 Q-25 -130 0 -160Z" fill="#c9a96e" transform="rotate(150)"/>
-                    <path d="M0 -160 Q25 -130 0 -100 Q-25 -130 0 -160Z" fill="#c9a96e" transform="rotate(180)"/>
-                    <path d="M0 -160 Q25 -130 0 -100 Q-25 -130 0 -160Z" fill="#c9a96e" transform="rotate(210)"/>
-                    <path d="M0 -160 Q25 -130 0 -100 Q-25 -130 0 -160Z" fill="#c9a96e" transform="rotate(240)"/>
-                    <path d="M0 -160 Q25 -130 0 -100 Q-25 -130 0 -160Z" fill="#c9a96e" transform="rotate(270)"/>
-                    <path d="M0 -160 Q25 -130 0 -100 Q-25 -130 0 -160Z" fill="#c9a96e" transform="rotate(300)"/>
-                    <path d="M0 -160 Q25 -130 0 -100 Q-25 -130 0 -160Z" fill="#c9a96e" transform="rotate(330)"/>
-                </g>
-                <!-- Inner petal ring -->
-                <g>
-                    <path d="M0 -90 Q15 -70 0 -50 Q-15 -70 0 -90Z" fill="#c9a96e" transform="rotate(15)"/>
-                    <path d="M0 -90 Q15 -70 0 -50 Q-15 -70 0 -90Z" fill="#c9a96e" transform="rotate(45)"/>
-                    <path d="M0 -90 Q15 -70 0 -50 Q-15 -70 0 -90Z" fill="#c9a96e" transform="rotate(75)"/>
-                    <path d="M0 -90 Q15 -70 0 -50 Q-15 -70 0 -90Z" fill="#c9a96e" transform="rotate(105)"/>
-                    <path d="M0 -90 Q15 -70 0 -50 Q-15 -70 0 -90Z" fill="#c9a96e" transform="rotate(135)"/>
-                    <path d="M0 -90 Q15 -70 0 -50 Q-15 -70 0 -90Z" fill="#c9a96e" transform="rotate(165)"/>
-                    <path d="M0 -90 Q15 -70 0 -50 Q-15 -70 0 -90Z" fill="#c9a96e" transform="rotate(195)"/>
-                    <path d="M0 -90 Q15 -70 0 -50 Q-15 -70 0 -90Z" fill="#c9a96e" transform="rotate(225)"/>
-                    <path d="M0 -90 Q15 -70 0 -50 Q-15 -70 0 -90Z" fill="#c9a96e" transform="rotate(255)"/>
-                    <path d="M0 -90 Q15 -70 0 -50 Q-15 -70 0 -90Z" fill="#c9a96e" transform="rotate(285)"/>
-                    <path d="M0 -90 Q15 -70 0 -50 Q-15 -70 0 -90Z" fill="#c9a96e" transform="rotate(315)"/>
-                    <path d="M0 -90 Q15 -70 0 -50 Q-15 -70 0 -90Z" fill="#c9a96e" transform="rotate(345)"/>
-                </g>
-                <!-- Center circles -->
-                <circle cx="0" cy="0" r="45" fill="none" stroke="#c9a96e" stroke-width="1"/>
-                <circle cx="0" cy="0" r="20" fill="none" stroke="#c9a96e" stroke-width="0.8"/>
-                <circle cx="0" cy="0" r="8" fill="#c9a96e" opacity="0.5"/>
+            <g fill="#7ba05b">
+                <path d="M282 250 Q295 235 275 230 Q272 252 282 250Z" opacity="0.30"/>
+                <path d="M242 145 Q230 130 228 152 Q244 156 242 145Z" opacity="0.25"/>
+                <path d="M220 70 Q208 55 210 78 Q224 82 220 70Z" opacity="0.22"/>
             </g>
-        </svg>
-
-        <!-- ===== SIDE FLORAL GARLANDS (left) ===== -->
-        <svg class="decor-garland decor-garland-left" viewBox="0 0 60 600" xmlns="http://www.w3.org/2000/svg">
-            <path d="M30 0 Q45 50 30 100 Q15 150 30 200 Q45 250 30 300 Q15 350 30 400 Q45 450 30 500 Q15 550 30 600" fill="none" stroke="#d4af37" stroke-width="0.8" opacity="0.12"/>
-            <!-- Repeating small flowers -->
-            <circle cx="30" cy="50" r="6" fill="#e8a0b4" opacity="0.08"/>
-            <circle cx="30" cy="50" r="2" fill="#c9708a" opacity="0.12"/>
-            <circle cx="30" cy="150" r="5" fill="#d4a0c8" opacity="0.07"/>
-            <circle cx="30" cy="150" r="1.8" fill="#b480a8" opacity="0.10"/>
-            <circle cx="30" cy="250" r="6" fill="#e8a0b4" opacity="0.08"/>
-            <circle cx="30" cy="250" r="2" fill="#c9708a" opacity="0.12"/>
-            <circle cx="30" cy="350" r="5" fill="#d4a0c8" opacity="0.07"/>
-            <circle cx="30" cy="350" r="1.8" fill="#b480a8" opacity="0.10"/>
-            <circle cx="30" cy="450" r="6" fill="#e8a0b4" opacity="0.08"/>
-            <circle cx="30" cy="450" r="2" fill="#c9708a" opacity="0.12"/>
-            <circle cx="30" cy="550" r="5" fill="#d4a0c8" opacity="0.07"/>
-            <circle cx="30" cy="550" r="1.8" fill="#b480a8" opacity="0.10"/>
-            <!-- Tiny leaves -->
-            <path d="M22 80 Q15 72 25 70 Q26 82 22 80Z" fill="#8baa6b" opacity="0.08"/>
-            <path d="M38 120 Q45 112 40 110 Q36 122 38 120Z" fill="#8baa6b" opacity="0.06"/>
-            <path d="M22 180 Q15 172 25 170 Q26 182 22 180Z" fill="#8baa6b" opacity="0.08"/>
-            <path d="M38 280 Q45 272 40 270 Q36 282 38 280Z" fill="#8baa6b" opacity="0.06"/>
-            <path d="M22 380 Q15 372 25 370 Q26 382 22 380Z" fill="#8baa6b" opacity="0.08"/>
-            <path d="M38 480 Q45 472 40 470 Q36 482 38 480Z" fill="#8baa6b" opacity="0.06"/>
-        </svg>
-
-        <!-- ===== SIDE FLORAL GARLANDS (right) ===== -->
-        <svg class="decor-garland decor-garland-right" viewBox="0 0 60 600" xmlns="http://www.w3.org/2000/svg">
-            <path d="M30 0 Q15 50 30 100 Q45 150 30 200 Q15 250 30 300 Q45 350 30 400 Q15 450 30 500 Q45 550 30 600" fill="none" stroke="#d4af37" stroke-width="0.8" opacity="0.12"/>
-            <circle cx="30" cy="50" r="6" fill="#d4a0c8" opacity="0.08"/>
-            <circle cx="30" cy="50" r="2" fill="#b480a8" opacity="0.12"/>
-            <circle cx="30" cy="150" r="5" fill="#e8a0b4" opacity="0.07"/>
-            <circle cx="30" cy="150" r="1.8" fill="#c9708a" opacity="0.10"/>
-            <circle cx="30" cy="250" r="6" fill="#d4a0c8" opacity="0.08"/>
-            <circle cx="30" cy="250" r="2" fill="#b480a8" opacity="0.12"/>
-            <circle cx="30" cy="350" r="5" fill="#e8a0b4" opacity="0.07"/>
-            <circle cx="30" cy="350" r="1.8" fill="#c9708a" opacity="0.10"/>
-            <circle cx="30" cy="450" r="6" fill="#d4a0c8" opacity="0.08"/>
-            <circle cx="30" cy="450" r="2" fill="#b480a8" opacity="0.12"/>
-            <circle cx="30" cy="550" r="5" fill="#e8a0b4" opacity="0.07"/>
-            <circle cx="30" cy="550" r="1.8" fill="#c9708a" opacity="0.10"/>
-            <path d="M38 80 Q45 72 35 70 Q34 82 38 80Z" fill="#8baa6b" opacity="0.08"/>
-            <path d="M22 120 Q15 112 20 110 Q24 122 22 120Z" fill="#8baa6b" opacity="0.06"/>
-            <path d="M38 180 Q45 172 35 170 Q34 182 38 180Z" fill="#8baa6b" opacity="0.08"/>
-            <path d="M22 280 Q15 272 20 270 Q24 282 22 280Z" fill="#8baa6b" opacity="0.06"/>
-            <path d="M38 380 Q45 372 35 370 Q34 382 38 380Z" fill="#8baa6b" opacity="0.08"/>
-            <path d="M22 480 Q15 472 20 470 Q24 482 22 480Z" fill="#8baa6b" opacity="0.06"/>
-        </svg>
-
-        <!-- ===== BOTTOM FLORAL ARCH ===== -->
-        <svg class="decor-corner decor-bottom-arch" viewBox="0 0 400 150" xmlns="http://www.w3.org/2000/svg">
-            <path d="M0 150 Q50 80 120 60 Q200 35 280 60 Q350 80 400 150" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.15"/>
-            <path d="M30 140 Q70 85 140 65 Q200 48 260 65 Q330 85 370 140" fill="none" stroke="#c9a96e" stroke-width="0.7" opacity="0.10"/>
-            <!-- Flowers on arch -->
-            <g opacity="0.10">
-                <circle cx="200" cy="40" r="12" fill="#e8a0b4"/>
-                <path d="M193 34 Q200 25 207 34 Q200 43 193 34Z" fill="#d4849c"/>
-                <circle cx="200" cy="40" r="3" fill="#c9708a"/>
-            </g>
-            <circle cx="120" cy="60" r="7" fill="#d4a0c8" opacity="0.08"/>
-            <circle cx="120" cy="60" r="2.5" fill="#b480a8" opacity="0.10"/>
-            <circle cx="280" cy="60" r="7" fill="#d4a0c8" opacity="0.08"/>
-            <circle cx="280" cy="60" r="2.5" fill="#b480a8" opacity="0.10"/>
-            <circle cx="80" cy="90" r="5" fill="#e8a0b4" opacity="0.06"/>
-            <circle cx="320" cy="90" r="5" fill="#e8a0b4" opacity="0.06"/>
-            <path d="M155 50 Q148 42 160 42 Q160 54 155 50Z" fill="#8baa6b" opacity="0.08"/>
-            <path d="M245 50 Q252 42 240 42 Q240 54 245 50Z" fill="#8baa6b" opacity="0.08"/>
-            <path d="M95 78 Q88 70 100 70 Q100 82 95 78Z" fill="#8baa6b" opacity="0.06"/>
-            <path d="M305 78 Q312 70 300 70 Q300 82 305 78Z" fill="#8baa6b" opacity="0.06"/>
+            <circle cx="278" cy="248" r="5" fill="#f0a0b8" opacity="0.30"/>
+            <circle cx="225" cy="65" r="4" fill="#d4a0d0" opacity="0.25"/>
+            <circle cx="265" cy="165" r="2" fill="#d4af37" opacity="0.25"/>
         </svg>
     </div>
 
