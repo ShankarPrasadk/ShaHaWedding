@@ -207,15 +207,100 @@
 
     <!-- Envelope Opening Screen -->
     <section class="envelope-screen" id="envelope-screen">
+        <!-- Envelope background decorations -->
+        <div class="env-bg-decor">
+            <svg class="env-floral env-floral-tl" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="40" cy="40" r="80" ry="75" fill="#f2c6d0" opacity="0.25"/>
+                <g transform="translate(50,55)" opacity="0.45">
+                    <circle cx="0" cy="0" r="24" fill="#f0a0b8"/>
+                    <ellipse cx="-6" cy="-6" rx="14" ry="11" fill="#e8889e" transform="rotate(-20)"/>
+                    <ellipse cx="6" cy="-4" rx="12" ry="9" fill="#f4b0c4" transform="rotate(15)"/>
+                    <circle cx="0" cy="0" r="5" fill="#d87090"/>
+                </g>
+                <g transform="translate(95,30)" opacity="0.35">
+                    <circle cx="0" cy="0" r="12" fill="#d4a0d0"/>
+                    <circle cx="0" cy="0" r="4" fill="#b480b0"/>
+                </g>
+                <path d="M20 15 Q5 5 25 0 Q30 18 20 15Z" fill="#7ba05b" opacity="0.30"/>
+                <path d="M75 20 Q88 10 85 30 Q72 33 75 20Z" fill="#7ba05b" opacity="0.25"/>
+                <path d="M15 80 Q2 70 20 65 Q24 82 15 80Z" fill="#7ba05b" opacity="0.22"/>
+                <path d="M-5 -5 Q30 30 25 90 Q20 120 50 150" fill="none" stroke="#c9a96e" stroke-width="1.5" opacity="0.20"/>
+                <circle cx="60" cy="12" r="2" fill="#d4af37" opacity="0.30"/>
+                <circle cx="18" cy="50" r="1.5" fill="#d4af37" opacity="0.25"/>
+            </svg>
+            <svg class="env-floral env-floral-tr" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="160" cy="40" r="80" ry="75" fill="#ead0f0" opacity="0.25"/>
+                <g transform="translate(150,55)" opacity="0.45">
+                    <circle cx="0" cy="0" r="24" fill="#d4a0d0"/>
+                    <ellipse cx="-6" cy="-6" rx="14" ry="11" fill="#c490c0" transform="rotate(-20)"/>
+                    <ellipse cx="6" cy="-4" rx="12" ry="9" fill="#d8aad4" transform="rotate(15)"/>
+                    <circle cx="0" cy="0" r="5" fill="#b480b0"/>
+                </g>
+                <g transform="translate(105,30)" opacity="0.35">
+                    <circle cx="0" cy="0" r="12" fill="#f0a0b8"/>
+                    <circle cx="0" cy="0" r="4" fill="#d87090"/>
+                </g>
+                <path d="M180 15 Q195 5 175 0 Q170 18 180 15Z" fill="#7ba05b" opacity="0.30"/>
+                <path d="M125 20 Q112 10 115 30 Q128 33 125 20Z" fill="#7ba05b" opacity="0.25"/>
+                <path d="M205 -5 Q170 30 175 90 Q180 120 150 150" fill="none" stroke="#c9a96e" stroke-width="1.5" opacity="0.20"/>
+                <circle cx="140" cy="12" r="2" fill="#d4af37" opacity="0.30"/>
+            </svg>
+            <svg class="env-floral env-floral-bl" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="40" cy="160" r="80" ry="75" fill="#f2c6d0" opacity="0.22"/>
+                <g transform="translate(50,150)" opacity="0.38">
+                    <circle cx="0" cy="0" r="20" fill="#f0a0b8"/>
+                    <ellipse cx="-5" cy="-5" rx="12" ry="9" fill="#e8889e" transform="rotate(-15)"/>
+                    <circle cx="0" cy="0" r="4" fill="#d87090"/>
+                </g>
+                <path d="M15 120 Q2 110 20 105 Q24 122 15 120Z" fill="#7ba05b" opacity="0.25"/>
+                <path d="M-5 205 Q30 170 25 110" fill="none" stroke="#c9a96e" stroke-width="1.5" opacity="0.18"/>
+            </svg>
+            <svg class="env-floral env-floral-br" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="160" cy="160" r="80" ry="75" fill="#ead0f0" opacity="0.22"/>
+                <g transform="translate(150,150)" opacity="0.38">
+                    <circle cx="0" cy="0" r="20" fill="#d4a0d0"/>
+                    <ellipse cx="-5" cy="-5" rx="12" ry="9" fill="#c490c0" transform="rotate(-15)"/>
+                    <circle cx="0" cy="0" r="4" fill="#b480b0"/>
+                </g>
+                <path d="M185 120 Q198 110 180 105 Q176 122 185 120Z" fill="#7ba05b" opacity="0.25"/>
+                <path d="M205 205 Q170 170 175 110" fill="none" stroke="#c9a96e" stroke-width="1.5" opacity="0.18"/>
+            </svg>
+        </div>
+        <!-- Floating golden particles on envelope screen -->
+        <div class="env-particles" id="env-particles"></div>
+
         <div class="envelope-wrapper">
             <div class="envelope-ring">💍</div>
-            <div class="envelope">
-                <div class="envelope-flap"></div>
-                <div class="envelope-seal">✦</div>
-                <div class="envelope-body">
-                    <div class="envelope-letter">
-                        <span class="envelope-heart">♥</span>
-                        <span class="envelope-preview-text">S & H</span>
+            <div class="envelope-title">You're Invited</div>
+            <div class="envelope-perspective">
+                <div class="envelope">
+                    <div class="envelope-flap">
+                        <div class="envelope-flap-inner"></div>
+                    </div>
+                    <div class="envelope-seal">
+                        <svg viewBox="0 0 50 50" width="50" height="50">
+                            <circle cx="25" cy="25" r="24" fill="url(#seal-grad)" />
+                            <circle cx="25" cy="25" r="20" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+                            <text x="25" y="21" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="11" fill="white">S</text>
+                            <text x="25" y="26" text-anchor="middle" font-family="'Montserrat', sans-serif" font-size="5" fill="rgba(255,255,255,0.8)" letter-spacing="1">&</text>
+                            <text x="25" y="36" text-anchor="middle" font-family="'Great Vibes', cursive" font-size="11" fill="white">H</text>
+                            <defs>
+                                <radialGradient id="seal-grad" cx="40%" cy="35%">
+                                    <stop offset="0%" stop-color="#e8c56d"/>
+                                    <stop offset="50%" stop-color="#c9a96e"/>
+                                    <stop offset="100%" stop-color="#8b6914"/>
+                                </radialGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="envelope-body">
+                        <div class="envelope-body-pattern"></div>
+                        <div class="envelope-letter">
+                            <div class="letter-border"></div>
+                            <span class="envelope-heart">♥</span>
+                            <span class="envelope-preview-text">S & H</span>
+                            <span class="letter-subtext">Engagement</span>
+                        </div>
                     </div>
                 </div>
             </div>

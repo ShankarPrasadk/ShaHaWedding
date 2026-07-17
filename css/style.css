@@ -244,13 +244,14 @@ body::before {
     justify-content: center;
     background: linear-gradient(135deg, 
         #f5eff7 0%, 
-        #fce4ec 30%, 
-        #fff8f0 60%, 
-        #ece3f5 100%
+        #fce4ec 25%, 
+        #fff8f0 50%, 
+        #ece3f5 75%,
+        #fce4ec 100%
     );
     z-index: 9999;
     cursor: pointer;
-    transition: opacity 1s cubic-bezier(0.4, 0, 0.2, 1), transform 1s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
 }
 
 .envelope-screen::before {
@@ -260,160 +261,306 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
+    background: 
+        radial-gradient(ellipse at 30% 20%, rgba(240, 160, 184, 0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(212, 160, 208, 0.10) 0%, transparent 50%),
+        radial-gradient(ellipse at center, rgba(212, 175, 55, 0.06) 0%, transparent 60%);
 }
 
-.envelope-screen.opened {
-    opacity: 0;
-    transform: scale(1.3);
+.envelope-screen::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(212, 175, 55, 0.015) 40px, rgba(212, 175, 55, 0.015) 42px),
+        repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(212, 175, 55, 0.015) 40px, rgba(212, 175, 55, 0.015) 42px);
     pointer-events: none;
+}
+
+/* Envelope background floral decorations */
+.env-bg-decor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.env-floral {
+    position: absolute;
+    width: 180px;
+    height: 180px;
+}
+
+.env-floral-tl { top: -10px; left: -10px; }
+.env-floral-tr { top: -10px; right: -10px; }
+.env-floral-bl { bottom: -10px; left: -10px; }
+.env-floral-br { bottom: -10px; right: -10px; }
+
+/* Floating particles on envelope screen */
+.env-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.env-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--gold-shimmer);
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+    animation: env-particle-float linear infinite;
+}
+
+@keyframes env-particle-float {
+    0% {
+        transform: translateY(0) scale(0);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.8;
+        transform: translateY(-15vh) scale(1);
+    }
+    85% {
+        opacity: 0.4;
+    }
+    100% {
+        transform: translateY(-100vh) scale(0.3);
+        opacity: 0;
+    }
 }
 
 .envelope-wrapper {
     text-align: center;
     position: relative;
+    z-index: 2;
 }
 
 .envelope-ring {
-    font-size: 3rem;
-    margin-bottom: 25px;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
     animation: ring-float 3s ease-in-out infinite;
-    filter: drop-shadow(0 4px 8px rgba(212, 175, 55, 0.3));
+    filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.35));
 }
 
 @keyframes ring-float {
     0%, 100% { transform: translateY(0) rotate(-5deg); }
-    50% { transform: translateY(-10px) rotate(5deg); }
+    50% { transform: translateY(-12px) rotate(5deg); }
+}
+
+.envelope-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--royal-purple);
+    margin-bottom: 25px;
+    opacity: 0.9;
+    text-shadow: 0 2px 8px rgba(92, 61, 110, 0.1);
+    animation: fadeInUp 1s ease 0.3s both;
+}
+
+/* 3D Perspective Envelope */
+.envelope-perspective {
+    perspective: 800px;
+    margin: 0 auto 30px;
+    width: 300px;
+    height: 210px;
 }
 
 .envelope {
     position: relative;
     width: 300px;
-    height: 200px;
-    margin: 0 auto 35px;
-    filter: drop-shadow(0 20px 60px rgba(107, 76, 122, 0.15));
+    height: 210px;
+    filter: drop-shadow(0 20px 50px rgba(107, 76, 122, 0.18))
+            drop-shadow(0 8px 20px rgba(201, 169, 110, 0.12));
+    transform-style: preserve-3d;
 }
 
 .envelope-body {
     position: absolute;
     bottom: 0;
     width: 100%;
-    height: 150px;
-    background: linear-gradient(145deg, #fffdf8, #fff5f8);
-    border-radius: 4px 4px 12px 12px;
+    height: 160px;
+    background: linear-gradient(165deg, #fffdf8 0%, #fff5f8 50%, #fef0f2 100%);
+    border-radius: 4px 4px 16px 16px;
     border: 2px solid var(--gold-light);
     border-top: none;
     overflow: hidden;
 }
 
-.envelope-body::after {
-    content: '';
+.envelope-body-pattern {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, transparent 40%, rgba(212, 175, 55, 0.05) 100%);
+    background: 
+        linear-gradient(135deg, transparent 45%, rgba(212, 175, 55, 0.04) 100%);
+    pointer-events: none;
 }
 
+.envelope-body-pattern::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to top, rgba(252, 228, 236, 0.15), transparent);
+}
+
+/* Envelope flap with 3D rotation */
 .envelope-flap {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 110px;
-    background: linear-gradient(145deg, #fffdf8, #fef0f5);
-    border: 2px solid var(--gold-light);
-    clip-path: polygon(0 0, 50% 75%, 100% 0);
+    height: 120px;
     transform-origin: top center;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
     z-index: 2;
+    transition: transform 0.3s ease;
 }
 
-.envelope-flap::after {
+.envelope-flap::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, transparent 30%, rgba(212, 175, 55, 0.08) 100%);
+    background: linear-gradient(165deg, #fffdf8 0%, #fef5f8 50%, #fef0f2 100%);
+    border: 2px solid var(--gold-light);
+    clip-path: polygon(0 0, 50% 80%, 100% 0);
+    backface-visibility: hidden;
 }
 
-.envelope-screen:hover .envelope-flap,
-.envelope-screen:active .envelope-flap {
-    transform: rotateX(170deg);
+.envelope-flap-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(165deg, #f0e8f5 0%, #ead0e0 50%, #e8c8d5 100%);
+    border: 2px solid var(--gold-light);
+    clip-path: polygon(0 0, 50% 80%, 100% 0);
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
 }
 
+.envelope-flap::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 8px;
+    right: 8px;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 35%, rgba(212, 175, 55, 0.08) 100%);
+    clip-path: polygon(0 0, 50% 78%, 100% 0);
+    pointer-events: none;
+    backface-visibility: hidden;
+}
+
+/* Wax seal */
 .envelope-seal {
     position: absolute;
-    top: 35%;
+    top: 38%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     z-index: 3;
-    box-shadow: 0 4px 15px rgba(201, 169, 110, 0.5);
-    font-size: 1.2rem;
-    color: white;
+    filter: drop-shadow(0 4px 12px rgba(201, 169, 110, 0.45));
+    animation: sealGlow 2s ease-in-out infinite;
 }
 
+@keyframes sealGlow {
+    0%, 100% { filter: drop-shadow(0 4px 12px rgba(201, 169, 110, 0.45)); }
+    50% { filter: drop-shadow(0 4px 20px rgba(212, 175, 55, 0.65)); }
+}
+
+/* Letter inside envelope */
 .envelope-letter {
     position: absolute;
-    bottom: 12px;
+    bottom: 14px;
     left: 50%;
     transform: translateX(-50%);
-    width: 82%;
-    height: 110px;
-    background: white;
-    border-radius: 6px;
-    border: 1px solid rgba(201, 169, 110, 0.3);
+    width: 80%;
+    height: 115px;
+    background: linear-gradient(180deg, #ffffff 0%, #fefbf8 100%);
+    border-radius: 8px;
+    border: 1px solid rgba(201, 169, 110, 0.35);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     animation: letterPeek 2.5s ease-in-out infinite;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.06),
+        inset 0 0 30px rgba(252, 228, 236, 0.15);
+}
+
+.letter-border {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 1px solid rgba(201, 169, 110, 0.15);
+    border-radius: 5px;
+    pointer-events: none;
 }
 
 .envelope-heart {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     color: #e88ca5;
     animation: heartbeat 1.8s ease-in-out infinite;
 }
 
 .envelope-preview-text {
     font-family: var(--font-display);
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: var(--royal-purple);
-    margin-top: 5px;
+    margin-top: 3px;
+}
+
+.letter-subtext {
+    font-family: var(--font-sans);
+    font-size: 0.55rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 2px;
 }
 
 @keyframes letterPeek {
     0%, 100% { transform: translateX(-50%) translateY(0); }
-    50% { transform: translateX(-50%) translateY(-20px); }
+    50% { transform: translateX(-50%) translateY(-22px); }
 }
 
 @keyframes heartbeat {
     0%, 100% { transform: scale(1); }
-    25% { transform: scale(1.15); }
+    25% { transform: scale(1.2); }
     50% { transform: scale(1); }
-    75% { transform: scale(1.1); }
+    75% { transform: scale(1.12); }
 }
 
 .open-text {
     font-family: var(--font-sans);
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 400;
     color: var(--text-muted);
     letter-spacing: 4px;
     text-transform: uppercase;
-    animation: fadeInUp 1s ease 0.5s both;
+    animation: fadeInUp 1s ease 0.5s both, pulseText 2.5s ease-in-out infinite 1.5s;
     position: relative;
 }
 
@@ -424,6 +571,11 @@ body::before {
     margin: 0 12px;
     font-size: 0.6rem;
     vertical-align: middle;
+}
+
+@keyframes pulseText {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
 }
 
 @keyframes fadeInUp {
@@ -463,7 +615,7 @@ body::before {
     border: 1px solid rgba(201, 169, 110, 0.25);
     border-radius: 24px;
     padding: 2px;
-    margin: 40px 0;
+    margin: 16px 0 40px;
     background: linear-gradient(135deg, 
         rgba(201, 169, 110, 0.1), 
         rgba(255, 255, 255, 0.3), 

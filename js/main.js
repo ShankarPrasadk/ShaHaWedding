@@ -5,6 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     initWatercolorBg();
+    initEnvelopeParticles();
     initEnvelope();
     initPetals();
     initSparkles();
@@ -66,6 +67,31 @@ function initWatercolorBg() {
     window.addEventListener('resize', resize);
 }
 
+/* ============ ENVELOPE PARTICLES ============ */
+
+function initEnvelopeParticles() {
+    const container = document.getElementById('env-particles');
+    if (!container) return;
+
+    for (let i = 0; i < 15; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('env-particle');
+        const left = Math.random() * 100;
+        const size = Math.random() * 3 + 2;
+        const duration = Math.random() * 8 + 6;
+        const delay = Math.random() * 10;
+        particle.style.cssText = `
+            left: ${left}%;
+            bottom: -10px;
+            width: ${size}px;
+            height: ${size}px;
+            animation-duration: ${duration}s;
+            animation-delay: ${delay}s;
+        `;
+        container.appendChild(particle);
+    }
+}
+
 /* ============ ENVELOPE OPENING ============ */
 
 function initEnvelope() {
@@ -73,18 +99,59 @@ function initEnvelope() {
     const invitation = document.getElementById('invitation');
 
     envelopeScreen.addEventListener('click', () => {
-        // GSAP-powered envelope exit
-        gsap.to(envelopeScreen, {
+        // Scroll to top immediately so invitation is visible
+        window.scrollTo(0, 0);
+        document.body.style.overflow = 'hidden';
+
+        // GSAP-powered multi-step envelope opening
+        const tl = gsap.timeline();
+
+        // Step 1: Seal pops away
+        tl.to('.envelope-seal', {
+            scale: 1.5,
             opacity: 0,
-            scale: 1.4,
-            duration: 1,
+            duration: 0.4,
+            ease: 'back.in(2)'
+        })
+        // Step 2: Flap opens with 3D rotation
+        .to('.envelope-flap', {
+            rotateX: 180,
+            duration: 0.8,
+            ease: 'power2.inOut'
+        })
+        // Step 3: Letter rises up from envelope
+        .to('.envelope-letter', {
+            y: -120,
+            scale: 1.05,
+            duration: 0.7,
+            ease: 'power2.out'
+        }, '-=0.3')
+        // Step 4: Ring sparkle
+        .to('.envelope-ring', {
+            scale: 1.3,
+            opacity: 0,
+            duration: 0.5,
+            ease: 'power2.in'
+        }, '-=0.5')
+        // Step 5: Entire screen fades with golden glow
+        .to('.envelope-wrapper', {
+            scale: 0.9,
+            opacity: 0,
+            duration: 0.5,
+            ease: 'power2.in'
+        })
+        .to(envelopeScreen, {
+            opacity: 0,
+            duration: 0.6,
             ease: 'power2.inOut',
             onComplete: () => {
                 envelopeScreen.style.display = 'none';
+                document.body.style.overflow = '';
+                window.scrollTo(0, 0);
                 invitation.classList.add('visible');
                 animateHero();
             }
-        });
+        }, '-=0.3');
     });
 }
 
