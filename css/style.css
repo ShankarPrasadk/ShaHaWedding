@@ -137,7 +137,7 @@ body::before {
 
 /* ---- Individual flower & leaf sway animations ---- */
 
-/* Gentle breeze sway for roses */
+/* Gentle breeze sway for whole floral groups */
 @keyframes flowerSway1 {
     0%, 100% { transform: translate(0, 0) rotate(0deg); }
     25% { transform: translate(2px, -3px) rotate(1.5deg); }
@@ -159,7 +159,7 @@ body::before {
     70% { transform: translate(3px, -3px) rotate(1deg); }
 }
 
-/* Leaf flutter */
+/* Leaf flutter — safe on path elements (no inline transform to conflict) */
 @keyframes leafFlutter1 {
     0%, 100% { transform: rotate(0deg) scale(1); }
     25% { transform: rotate(4deg) scale(1.03); }
@@ -174,55 +174,27 @@ body::before {
     85% { transform: rotate(-2deg) scale(1.01); }
 }
 
-/* Bud gentle bob */
-@keyframes budBob {
-    0%, 100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-4px) scale(1.05); }
-}
-
 /* Gold dot twinkle */
 @keyframes dotTwinkle {
     0%, 100% { opacity: 0.3; transform: scale(1); }
     50% { opacity: 0.7; transform: scale(1.4); }
 }
 
-/* Vine gentle wave */
-@keyframes vineWave {
-    0%, 100% { stroke-dashoffset: 0; }
-    50% { stroke-dashoffset: 8; }
-}
-
 /* --- Side corner floral animations (bg-decor) --- */
+/* NOTE: We only animate leaves & gold dots individually.
+   Roses/buds animate via the parent SVG vineSwayLeft/Right. */
 
-/* Roses in corner SVGs - target the <g> groups with translate transforms */
-.decor-corner g[transform*="translate(40,90)"],
-.decor-corner g[transform*="translate(310,90)"] {
-    animation: flowerSway1 6s ease-in-out infinite;
-}
-
-.decor-corner g[transform*="translate(60,230)"],
-.decor-corner g[transform*="translate(290,230)"] {
-    animation: flowerSway2 7s ease-in-out infinite 0.5s;
-}
-
-.decor-corner g[transform*="translate(45,370)"],
-.decor-corner g[transform*="translate(305,370)"] {
-    animation: flowerSway3 8s ease-in-out infinite 1s;
-}
-
-/* Buds */
-.decor-corner g[transform*="translate(20,160)"],
-.decor-corner g[transform*="translate(330,160)"] {
-    animation: budBob 4s ease-in-out infinite 0.8s;
-}
-
-/* Leaves in corner SVGs */
+/* Leaves in corner SVGs (paths with no inline transform) */
 .decor-corner g[fill="#7ba05b"] path:nth-child(odd) {
     animation: leafFlutter1 5s ease-in-out infinite;
+    transform-origin: center;
+    transform-box: fill-box;
 }
 
 .decor-corner g[fill="#7ba05b"] path:nth-child(even) {
     animation: leafFlutter2 6s ease-in-out infinite 0.3s;
+    transform-origin: center;
+    transform-box: fill-box;
 }
 
 /* Gold dots twinkle */
@@ -240,26 +212,6 @@ body::before {
 
 .decor-corner circle[fill="#d4af37"]:nth-of-type(4) {
     animation-delay: 1.5s;
-}
-
-/* Small buds (circles with pink/purple fill) */
-.decor-corner > circle[fill="#f0a0b8"] {
-    animation: budBob 5s ease-in-out infinite 0.2s;
-}
-
-.decor-corner > circle[fill="#d4a0d0"] {
-    animation: budBob 5.5s ease-in-out infinite 0.7s;
-}
-
-/* Bottom corner roses */
-.decor-corner g[transform*="translate(40,200)"],
-.decor-corner g[transform*="translate(260,200)"] {
-    animation: flowerSway1 7s ease-in-out infinite 0.3s;
-}
-
-.decor-corner g[transform*="translate(70,100)"],
-.decor-corner g[transform*="translate(230,100)"] {
-    animation: flowerSway2 6s ease-in-out infinite 0.6s;
 }
 
 /* --- Inner card floral animations --- */
@@ -323,36 +275,17 @@ body::before {
     75% { transform: translate(-1px, -1px) rotate(-0.5deg); }
 }
 
-/* Inner card rose/bud animations */
-.card-floral g[transform*="translate(45,50)"],
-.card-floral g[transform*="translate(155,50)"] {
-    animation: flowerSway1 7s ease-in-out infinite;
-}
-
-.card-floral g[transform*="translate(45,155)"],
-.card-floral g[transform*="translate(155,155)"] {
-    animation: flowerSway2 8s ease-in-out infinite 0.4s;
-}
-
-.card-floral g[transform*="translate(90,35)"],
-.card-floral g[transform*="translate(110,35)"] {
-    animation: budBob 5s ease-in-out infinite 0.6s;
-}
-
-.card-floral g[transform*="translate(25,100)"],
-.card-floral g[transform*="translate(175,100)"],
-.card-floral g[transform*="translate(80,170)"],
-.card-floral g[transform*="translate(120,170)"] {
-    animation: budBob 4.5s ease-in-out infinite 0.3s;
-}
-
-/* Inner card leaves */
+/* Inner card leaves (paths without inline transforms — safe to animate) */
 .card-floral path[fill="#7ba05b"]:nth-of-type(odd) {
     animation: leafFlutter1 6s ease-in-out infinite;
+    transform-origin: center;
+    transform-box: fill-box;
 }
 
 .card-floral path[fill="#7ba05b"]:nth-of-type(even) {
     animation: leafFlutter2 7s ease-in-out infinite 0.5s;
+    transform-origin: center;
+    transform-box: fill-box;
 }
 
 /* Inner card gold dots */
@@ -379,25 +312,12 @@ body::before {
 }
 
 /* --- Envelope screen floral animations --- */
-
-.env-floral g {
-    animation: flowerSway1 6s ease-in-out infinite;
-}
-
-.env-floral-tr g {
-    animation: flowerSway2 7s ease-in-out infinite 0.3s;
-}
-
-.env-floral-bl g {
-    animation: flowerSway3 8s ease-in-out infinite 0.7s;
-}
-
-.env-floral-br g {
-    animation: flowerSway2 7.5s ease-in-out infinite 1s;
-}
+/* Only animate leaves & dots — not <g> elements with inline transforms */
 
 .env-floral path[fill="#7ba05b"] {
     animation: leafFlutter1 5s ease-in-out infinite;
+    transform-origin: center;
+    transform-box: fill-box;
 }
 
 .env-floral-tr path[fill="#7ba05b"],
@@ -411,9 +331,10 @@ body::before {
 
 /* Reduce motion for accessibility */
 @media (prefers-reduced-motion: reduce) {
-    .decor-corner g, .card-floral g, .env-floral g,
-    .decor-corner circle, .card-floral path, .env-floral path,
-    .card-floral, .card-center-glow {
+    .decor-corner, .card-floral, .card-center-glow,
+    .decor-corner g[fill="#7ba05b"] path,
+    .card-floral path, .card-floral circle,
+    .decor-corner circle, .env-floral path, .env-floral circle {
         animation: none !important;
     }
 }
