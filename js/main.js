@@ -525,7 +525,7 @@ function initActions() {
 
     // Share via WhatsApp
     document.getElementById('btn-share').addEventListener('click', () => {
-        const message = `💍✨ *You're Invited!* ✨💍\n\nWith immense joy, we invite you to the\n*Engagement Ceremony* of\n\n✨ *Shankar Prasad K*\n& *Hari Priya V* ✨\n\n📅 *30th August 2026* (Saturday)\n🕥 *10:30 AM* Onwards\n📍 *RP Lakshmi Hotels — Thanya*\n\n🗺️ Directions: https://share.google/y2Ez72gkfUQZj2yTq\n\nYour gracious presence will make our day truly special! 🙏✨`;
+        const message = `💍✨ *You're Invited!* ✨💍\n\nWith immense joy, we invite you to the\n*Engagement Ceremony* of\n\n✨ *Shankar Prasad K*\n& *Hari Priya V* ✨\n\n📅 *30th August 2026* (Sunday)\n🕥 *10:30 AM* Onwards\n📍 *RP Lakshmi Hotels — Thanya*\n\n🗺️ Directions: https://share.google/y2Ez72gkfUQZj2yTq\n\nYour gracious presence will make our day truly special! 🙏✨`;
 
         const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
         window.open(whatsappUrl, '_blank');
