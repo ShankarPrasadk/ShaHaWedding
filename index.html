@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Shankar Prasad & Hari Priya — Engagement</title>
+    <meta name="description" content="You're invited to the engagement ceremony of Shankar Prasad K & Hari Priya V">
+    <meta property="og:title" content="Shankar Prasad & Hari Priya — Engagement Invitation">
+    <meta property="og:description" content="Join us as we celebrate our engagement on 30th August 2026">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Background Decorative Elements -->
+    <div class="bg-decor">
+        <!-- Top-left floral vine -->
+        <svg class="decor-vine decor-top-left" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 0 Q60 50 40 120 Q20 180 60 220 Q90 250 70 300" fill="none" stroke="var(--gold-light)" stroke-width="1.5" opacity="0.3"/>
+            <circle cx="40" cy="60" r="12" fill="var(--gold)" opacity="0.06"/>
+            <circle cx="30" cy="120" r="18" fill="var(--pastel-pink)" opacity="0.15"/>
+            <circle cx="60" cy="180" r="10" fill="var(--gold)" opacity="0.08"/>
+            <path d="M35 55 Q45 45 55 55 Q45 65 35 55Z" fill="var(--gold)" opacity="0.12"/>
+            <path d="M25 115 Q35 100 50 115 Q35 130 25 115Z" fill="var(--gold)" opacity="0.1"/>
+            <path d="M55 175 Q65 162 78 175 Q65 188 55 175Z" fill="var(--gold)" opacity="0.1"/>
+            <circle cx="42" cy="55" r="2" fill="var(--gold)" opacity="0.2"/>
+            <circle cx="35" cy="115" r="2" fill="var(--gold)" opacity="0.2"/>
+            <circle cx="65" cy="175" r="2" fill="var(--gold)" opacity="0.2"/>
+        </svg>
+        <!-- Top-right floral vine -->
+        <svg class="decor-vine decor-top-right" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg">
+            <path d="M200 0 Q140 50 160 120 Q180 180 140 220 Q110 250 130 300" fill="none" stroke="var(--gold-light)" stroke-width="1.5" opacity="0.3"/>
+            <circle cx="160" cy="60" r="12" fill="var(--gold)" opacity="0.06"/>
+            <circle cx="170" cy="120" r="18" fill="var(--pastel-lavender)" opacity="0.15"/>
+            <circle cx="140" cy="180" r="10" fill="var(--gold)" opacity="0.08"/>
+            <path d="M155 55 Q165 45 175 55 Q165 65 155 55Z" fill="var(--gold)" opacity="0.12"/>
+            <path d="M165 115 Q175 100 190 115 Q175 130 165 115Z" fill="var(--gold)" opacity="0.1"/>
+            <path d="M135 175 Q145 162 158 175 Q145 188 135 175Z" fill="var(--gold)" opacity="0.1"/>
+            <circle cx="165" cy="55" r="2" fill="var(--gold)" opacity="0.2"/>
+            <circle cx="175" cy="115" r="2" fill="var(--gold)" opacity="0.2"/>
+            <circle cx="145" cy="175" r="2" fill="var(--gold)" opacity="0.2"/>
+        </svg>
+        <!-- Center rings watermark -->
+        <svg class="decor-rings" viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="45" cy="40" rx="28" ry="28" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.08"/>
+            <ellipse cx="75" cy="40" rx="28" ry="28" fill="none" stroke="var(--gold)" stroke-width="1" opacity="0.08"/>
+            <circle cx="60" cy="20" r="3" fill="var(--gold)" opacity="0.1"/>
+        </svg>
+        <!-- Bottom floral spray -->
+        <svg class="decor-vine decor-bottom-center" viewBox="0 0 300 120" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 110 Q80 60 150 50 Q220 60 250 110" fill="none" stroke="var(--gold-light)" stroke-width="1.2" opacity="0.25"/>
+            <path d="M80 90 Q100 50 150 40 Q200 50 220 90" fill="none" stroke="var(--gold-light)" stroke-width="1" opacity="0.15"/>
+            <circle cx="150" cy="38" r="8" fill="var(--gold)" opacity="0.06"/>
+            <path d="M145 35 Q150 25 155 35 Q150 45 145 35Z" fill="var(--gold)" opacity="0.12"/>
+            <path d="M100 70 Q108 60 116 70 Q108 80 100 70Z" fill="var(--gold)" opacity="0.08"/>
+            <path d="M184 70 Q192 60 200 70 Q192 80 184 70Z" fill="var(--gold)" opacity="0.08"/>
+            <circle cx="150" cy="35" r="2" fill="var(--gold)" opacity="0.15"/>
+        </svg>
+    </div>
+
+    <!-- Sparkle Particles -->
+    <div class="sparkle-container" id="sparkles"></div>
+
+    <!-- Floating Petals -->
+    <div class="petals-container" id="petals"></div>
+
+    <!-- Envelope Opening Screen -->
+    <section class="envelope-screen" id="envelope-screen">
+        <div class="envelope-wrapper">
+            <div class="envelope-ring">💍</div>
+            <div class="envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-seal">✦</div>
+                <div class="envelope-body">
+                    <div class="envelope-letter">
+                        <span class="envelope-heart">♥</span>
+                        <span class="envelope-preview-text">S & H</span>
+                    </div>
+                </div>
+            </div>
+            <p class="open-text">Tap to Open</p>
+        </div>
+    </section>
+
+    <!-- Main Invitation -->
+    <main class="invitation" id="invitation">
+
+        <!-- Hero Section with Decorative Frame -->
+        <section class="border-frame">
+            <div class="border-frame-inner">
+                <span class="corner-ornament top-left">❧</span>
+                <span class="corner-ornament top-right">❧</span>
+                <span class="corner-ornament bottom-left">❧</span>
+                <span class="corner-ornament bottom-right">❧</span>
+
+                <div class="hero">
+                    <div class="ornament-divider">
+                        <span class="line"></span>
+                        <span class="diamond"></span>
+                        <span class="line"></span>
+                    </div>
+
+                    <p class="subtitle">Together with their families</p>
+
+                    <h1 class="names">
+                        <span class="name groom">Shankar Prasad</span>
+                        <span class="ampersand">&</span>
+                        <span class="name bride">Hari Priya</span>
+                    </h1>
+
+                    <p class="invite-line">Request the pleasure of your company at their</p>
+
+                    <h2 class="event-type shimmer-text">Engagement Ceremony</h2>
+
+                    <div class="ornament-divider">
+                        <span class="line"></span>
+                        <span class="diamond"></span>
+                        <span class="line"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Date & Time Section -->
+        <section class="details-section">
+            <div class="detail-card">
+                <div class="detail-icon">
+                    <svg class="icon-svg" viewBox="0 0 48 48" width="44" height="44">
+                        <rect x="6" y="10" width="36" height="32" rx="4" fill="none" stroke="var(--gold)" stroke-width="2"/>
+                        <rect x="6" y="10" width="36" height="10" rx="4" fill="var(--gold)" opacity="0.15"/>
+                        <line x1="14" y1="6" x2="14" y2="14" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round"/>
+                        <line x1="34" y1="6" x2="34" y2="14" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round"/>
+                        <text x="24" y="29" text-anchor="middle" font-family="'Montserrat',sans-serif" font-size="7" font-weight="600" fill="var(--royal-purple)" letter-spacing="0.5">30</text>
+                        <text x="24" y="38" text-anchor="middle" font-family="'Montserrat',sans-serif" font-size="6" font-weight="400" fill="var(--gold-dark)">AUG</text>
+                    </svg>
+                </div>
+                <h3>Save the Date</h3>
+                <p class="detail-main">30th August 2026</p>
+                <p class="detail-sub">Saturday</p>
+            </div>
+            <div class="detail-card">
+                <div class="detail-icon">
+                    <svg class="icon-svg" viewBox="0 0 48 48" width="44" height="44">
+                        <circle cx="24" cy="24" r="18" fill="none" stroke="var(--gold)" stroke-width="2"/>
+                        <circle cx="24" cy="24" r="18" fill="var(--gold)" opacity="0.06"/>
+                        <circle cx="24" cy="24" r="2.5" fill="var(--gold)"/>
+                        <line x1="24" y1="24" x2="15" y2="19" stroke="var(--royal-purple)" stroke-width="2.5" stroke-linecap="round"/>
+                        <line x1="24" y1="24" x2="24" y2="35" stroke="var(--gold-dark)" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="24" cy="7" r="1" fill="var(--gold)" opacity="0.5"/>
+                        <circle cx="24" cy="41" r="1" fill="var(--gold)" opacity="0.5"/>
+                        <circle cx="7" cy="24" r="1" fill="var(--gold)" opacity="0.5"/>
+                        <circle cx="41" cy="24" r="1" fill="var(--gold)" opacity="0.5"/>
+                    </svg>
+                </div>
+                <h3>Auspicious Time</h3>
+                <p class="detail-main">10:30 AM</p>
+                <p class="detail-sub">Onwards</p>
+            </div>
+            <div class="detail-card">
+                <div class="detail-icon">
+                    <svg class="icon-svg" viewBox="0 0 48 48" width="44" height="44">
+                        <path d="M24 4 C24 4 40 18 40 28 C40 36.8 32.8 42 24 42 C15.2 42 8 36.8 8 28 C8 18 24 4 24 4Z" fill="var(--gold)" opacity="0.1" stroke="var(--gold)" stroke-width="2"/>
+                        <circle cx="24" cy="26" r="4" fill="var(--royal-purple)" opacity="0.8"/>
+                        <circle cx="24" cy="26" r="1.5" fill="white"/>
+                    </svg>
+                </div>
+                <h3>Venue</h3>
+                <p class="detail-main">RP Lakshmi Hotels</p>
+                <p class="detail-sub">Thanya</p>
+            </div>
+        </section>
+
+        <!-- Countdown Section -->
+        <section class="countdown-section">
+            <h3 class="section-title">Counting Down to Our Special Day</h3>
+            <div class="countdown" id="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-number" id="days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-number" id="seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="quote-section">
+            <p class="quote">Two souls, one heart — a beautiful beginning of forever together.</p>
+        </section>
+
+        <!-- Venue Section -->
+        <section class="venue-section">
+            <h3 class="section-title">Venue</h3>
+            <div class="venue-card">
+                <div class="venue-info">
+                    <h4>RP Lakshmi Hotels — Thanya</h4>
+                    <p>We can't wait to celebrate this joyous occasion with you!</p>
+                </div>
+                <a href="https://share.google/y2Ez72gkfUQZj2yTq" target="_blank" rel="noopener noreferrer" class="btn btn-directions">
+                    <span>📍</span> Get Directions
+                </a>
+            </div>
+        </section>
+
+        <!-- Actions Section -->
+        <section class="actions-section">
+            <h3 class="section-title">Join Our Celebration</h3>
+            <div class="actions">
+                <button class="btn btn-calendar" id="btn-calendar">
+                    <span>
+                        <svg viewBox="0 0 20 20" width="16" height="16" style="vertical-align: middle;">
+                            <rect x="2" y="4" width="16" height="14" rx="2" fill="none" stroke="white" stroke-width="1.5"/>
+                            <line x1="6" y1="2" x2="6" y2="6" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="14" y1="2" x2="14" y2="6" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+                            <rect x="2" y="4" width="16" height="4" rx="2" fill="white" opacity="0.3"/>
+                        </svg>
+                    </span> Add to Calendar
+                </button>
+                <button class="btn btn-share" id="btn-share">
+                    <span>💌</span> Share Invitation
+                </button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="ornament-divider">
+                <span class="line"></span>
+                <span class="diamond"></span>
+                <span class="line"></span>
+            </div>
+            <p class="footer-text">With Love & Blessings</p>
+            <p class="footer-names">Shankar Prasad & Hari Priya</p>
+            <p class="footer-blessings">We look forward to your gracious presence</p>
+            <div class="ornament-divider">
+                <span class="line"></span>
+                <span class="diamond"></span>
+                <span class="line"></span>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Music Toggle -->
+    <button class="music-toggle" id="music-toggle" aria-label="Toggle music">
+        🎵
+    </button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
