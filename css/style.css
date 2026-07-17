@@ -79,58 +79,90 @@ body::before {
     overflow: hidden;
 }
 
-.decor-vine {
+.decor-corner {
     position: absolute;
 }
 
 .decor-top-left {
-    top: 0;
-    left: -20px;
-    width: 160px;
-    height: 280px;
-    animation: vineSwayLeft 8s ease-in-out infinite;
-}
-
-.decor-top-right {
-    top: 0;
-    right: -20px;
-    width: 160px;
-    height: 280px;
-    animation: vineSwayRight 8s ease-in-out infinite;
-}
-
-.decor-bottom-center {
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 260px;
-    height: 100px;
+    top: -10px;
+    left: -30px;
+    width: 200px;
+    height: 380px;
     animation: vineSwayLeft 10s ease-in-out infinite;
 }
 
-.decor-rings {
+.decor-top-right {
+    top: -10px;
+    right: -30px;
+    width: 200px;
+    height: 380px;
+    animation: vineSwayRight 10s ease-in-out infinite;
+}
+
+.decor-bottom-left {
+    bottom: -10px;
+    left: -20px;
+    width: 180px;
+    height: 220px;
+    animation: vineSwayRight 12s ease-in-out infinite;
+}
+
+.decor-bottom-right {
+    bottom: -10px;
+    right: -20px;
+    width: 180px;
+    height: 220px;
+    animation: vineSwayLeft 12s ease-in-out infinite;
+}
+
+.decor-bottom-arch {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 500px;
+    height: 120px;
+}
+
+.decor-mandala {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 200px;
-    animation: ringsFloat 12s ease-in-out infinite;
+    width: 500px;
+    height: 500px;
+    animation: mandalaRotate 120s linear infinite;
+}
+
+.decor-garland {
+    position: absolute;
+    top: 0;
+    height: 100%;
+}
+
+.decor-garland-left {
+    left: 5px;
+    width: 40px;
+}
+
+.decor-garland-right {
+    right: 5px;
+    width: 40px;
 }
 
 @keyframes vineSwayLeft {
-    0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(1.5deg); }
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(1deg) scale(1.01); }
 }
 
 @keyframes vineSwayRight {
-    0%, 100% { transform: rotate(0deg); }
-    50% { transform: rotate(-1.5deg); }
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    50% { transform: rotate(-1deg) scale(1.01); }
 }
 
-@keyframes ringsFloat {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-    50% { transform: translate(-50%, -50%) scale(1.02); opacity: 0.8; }
+@keyframes mandalaRotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 /* ============ SVG ICON STYLES ============ */
@@ -1082,18 +1114,38 @@ body::before {
     }
 
     .decor-top-left {
-        width: 200px;
-        height: 340px;
+        width: 260px;
+        height: 420px;
     }
 
     .decor-top-right {
-        width: 200px;
-        height: 340px;
+        width: 260px;
+        height: 420px;
     }
 
-    .decor-bottom-center {
-        width: 320px;
-        height: 120px;
+    .decor-bottom-left {
+        width: 220px;
+        height: 260px;
+    }
+
+    .decor-bottom-right {
+        width: 220px;
+        height: 260px;
+    }
+
+    .decor-garland-left {
+        left: 15px;
+        width: 50px;
+    }
+
+    .decor-garland-right {
+        right: 15px;
+        width: 50px;
+    }
+
+    .decor-mandala {
+        width: 650px;
+        height: 650px;
     }
 }
 
