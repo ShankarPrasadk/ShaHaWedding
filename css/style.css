@@ -411,6 +411,89 @@ body::before {
     }
 }
 
+/* ============ FLYING BUTTERFLIES ============ */
+
+.butterflies-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10000;
+    overflow: hidden;
+}
+
+.butterfly {
+    position: absolute;
+    left: -60px;
+    will-change: transform;
+    filter: drop-shadow(0 6px 7px rgba(90, 60, 90, 0.32));
+    /* perspective so the tilted SVG below is seen with true depth */
+    perspective: 460px;
+}
+
+/* Tilt the whole butterfly so we view it from a low 3/4 side angle instead of flat top-down.
+   rotateX pitches it toward the viewer; rotateY yaws it for a dimensional three-quarter look. */
+.bf-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    transform-style: preserve-3d;
+    transform-origin: 50% 46%;
+    transform: rotateX(var(--bf-tilt, 60deg)) rotateY(var(--bf-yaw, -12deg));
+}
+
+/* Wing flap: the wings fold up toward the body hinge (x=50). Combined with the 3D tilt
+   above, the near wing sweeps forward and the far wing recedes — a real side-angle beat. */
+.bf-wing {
+    transform-box: view-box;
+    transform-origin: 50px 45px;
+    animation: bf-flap var(--flap-dur, 0.24s) cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite alternate;
+}
+
+@keyframes bf-flap {
+    0%   { transform: scaleX(1)    translateY(0); }
+    100% { transform: scaleX(0.12) translateY(-2px); }
+}
+
+/* Left-to-right flight with gentle bobbing */
+.bf-fly-right {
+    animation-name: bf-path-right;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.bf-fly-left {
+    animation-name: bf-path-left;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes bf-path-right {
+    0%   { transform: translate(-8vw, 0) rotate(6deg); opacity: 0; }
+    8%   { opacity: 1; }
+    25%  { transform: translate(25vw, -8vh) rotate(-6deg); }
+    50%  { transform: translate(55vw, 6vh) rotate(8deg); }
+    75%  { transform: translate(80vw, -5vh) rotate(-4deg); }
+    92%  { opacity: 1; }
+    100% { transform: translate(112vw, 4vh) rotate(6deg); opacity: 0; }
+}
+
+@keyframes bf-path-left {
+    0%   { transform: translate(112vw, 0) rotate(-6deg) scaleX(-1); opacity: 0; }
+    8%   { opacity: 1; }
+    25%  { transform: translate(80vw, 7vh) rotate(6deg) scaleX(-1); }
+    50%  { transform: translate(50vw, -6vh) rotate(-8deg) scaleX(-1); }
+    75%  { transform: translate(22vw, 5vh) rotate(4deg) scaleX(-1); }
+    92%  { opacity: 1; }
+    100% { transform: translate(-12vw, -4vh) rotate(-6deg) scaleX(-1); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .butterfly { display: none; }
+}
+
 /* ============ SPARKLE PARTICLES ============ */
 
 .sparkle-container {
@@ -1243,6 +1326,13 @@ body::before {
     text-align: center;
 }
 
+.leaf-divider {
+    width: 200px;
+    height: 28px;
+    margin: 0 auto 25px;
+    display: block;
+}
+
 .quote {
     font-family: var(--font-serif);
     font-size: 1.15rem;
@@ -1406,6 +1496,60 @@ body::before {
     flex-direction: column;
     gap: 16px;
     align-items: center;
+}
+
+/* ============ RSVP SECTION ============ */
+
+.rsvp-section {
+    padding: 20px 0 10px;
+    text-align: center;
+}
+
+.rsvp-card {
+    background: 
+        radial-gradient(ellipse at top, rgba(245, 208, 220, 0.35) 0%, transparent 60%),
+        rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(201, 169, 110, 0.3);
+    border-radius: 20px;
+    padding: 40px 25px 35px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(201, 169, 110, 0.08);
+}
+
+.rsvp-badge {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 4px;
+    color: var(--gold-dark);
+    padding: 6px 22px;
+    border: 1px solid var(--gold);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.6);
+    margin-bottom: 16px;
+}
+
+.rsvp-text {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-style: italic;
+    color: var(--text-muted);
+    margin-bottom: 22px;
+}
+
+.btn-rsvp {
+    background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+    color: white;
+    box-shadow: 0 6px 20px rgba(201, 169, 110, 0.35);
+}
+
+.btn-rsvp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(201, 169, 110, 0.5);
 }
 
 /* ============ FOOTER ============ */

@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initEnvelopeParticles();
     initEnvelope();
     initPetals();
+    initButterflies();
     initSparkles();
     initCountdown();
     initScrollReveal();
@@ -242,6 +243,142 @@ function createPetal(container, symbols) {
     }, (duration + delay) * 1000);
 }
 
+/* ============ FLYING BUTTERFLIES (realistic, 3D flap) ============ */
+
+// pal = { fore, foreEdge, hind, hindEdge, body, accent }
+function butterflySVG(pal, uid) {
+    const g = (s) => `bf${uid}-${s}`;
+    // One wing half is drawn, then mirrored via CSS/scaleX for the other side.
+    const wingHalf = (side) => `
+        <g class="bf-wing bf-wing-${side}">
+            <!-- forewing -->
+            <path d="M50 40
+                     C34 12 14 4 5 12
+                     C-3 20 6 34 22 40
+                     C33 44 44 44 50 42 Z"
+                  fill="url(#${g('fore')})" stroke="${pal.foreEdge}" stroke-width="1.4"/>
+            <!-- hindwing -->
+            <path d="M50 44
+                     C40 50 24 58 16 54
+                     C6 49 10 38 24 40
+                     C34 41 45 42 50 43 Z"
+                  fill="url(#${g('hind')})" stroke="${pal.hindEdge}" stroke-width="1.4"/>
+            <!-- forewing dark tip band -->
+            <path d="M22 12 C14 8 8 11 5 16 C10 15 16 16 22 20 Z"
+                  fill="${pal.foreEdge}" opacity="0.55"/>
+            <!-- veins -->
+            <g stroke="${pal.body}" stroke-width="0.7" fill="none" opacity="0.45" stroke-linecap="round">
+                <path d="M50 41 C38 34 26 26 12 16"/>
+                <path d="M50 41 C36 33 24 30 10 24"/>
+                <path d="M50 42 C38 41 26 42 16 46"/>
+                <path d="M50 43 C40 46 30 50 22 51"/>
+            </g>
+            <!-- pearl spots -->
+            <circle cx="14" cy="15" r="2.4" fill="rgba(255,255,255,0.75)"/>
+            <circle cx="10" cy="21" r="1.6" fill="rgba(255,255,255,0.6)"/>
+            <circle cx="20" cy="49" r="1.8" fill="rgba(255,255,255,0.55)"/>
+            <!-- soft top-light highlight for 3D sheen -->
+            <path d="M40 38 C30 26 20 20 12 18 C22 24 32 30 40 40 Z"
+                  fill="rgba(255,255,255,0.35)"/>
+        </g>`;
+
+    return `
+    <svg class="bf-svg" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <radialGradient id="${g('fore')}" cx="30%" cy="35%" r="80%">
+                <stop offset="0%" stop-color="${pal.foreLight || '#ffffff'}"/>
+                <stop offset="45%" stop-color="${pal.fore}"/>
+                <stop offset="100%" stop-color="${pal.foreEdge}"/>
+            </radialGradient>
+            <radialGradient id="${g('hind')}" cx="40%" cy="45%" r="85%">
+                <stop offset="0%" stop-color="${pal.hindLight || '#ffffff'}"/>
+                <stop offset="50%" stop-color="${pal.hind}"/>
+                <stop offset="100%" stop-color="${pal.hindEdge}"/>
+            </radialGradient>
+            <linearGradient id="${g('body')}" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="${pal.accent}"/>
+                <stop offset="50%" stop-color="${pal.body}"/>
+                <stop offset="100%" stop-color="${pal.bodyDark || pal.body}"/>
+            </linearGradient>
+        </defs>
+
+        <!-- wings (right side is the mirrored group) -->
+        <g class="bf-wing-pair-left">${wingHalf('left')}</g>
+        <g class="bf-wing-pair-right" transform="translate(100,0) scale(-1,1)">${wingHalf('right')}</g>
+
+        <!-- antennae -->
+        <g stroke="${pal.body}" stroke-width="1.1" fill="none" stroke-linecap="round">
+            <path d="M50 28 C46 14 42 9 38 6"/>
+            <path d="M50 28 C54 14 58 9 62 6"/>
+        </g>
+        <circle cx="38" cy="6" r="1.6" fill="${pal.body}"/>
+        <circle cx="62" cy="6" r="1.6" fill="${pal.body}"/>
+
+        <!-- body: head, thorax, segmented abdomen -->
+        <circle cx="50" cy="28" r="3.6" fill="url(#${g('body')})"/>
+        <ellipse cx="50" cy="44" rx="3.4" ry="16" fill="url(#${g('body')})"/>
+        <g stroke="${pal.bodyDark || pal.accent}" stroke-width="0.6" opacity="0.5">
+            <line x1="47" y1="40" x2="53" y2="40"/>
+            <line x1="47" y1="46" x2="53" y2="46"/>
+            <line x1="47.5" y1="52" x2="52.5" y2="52"/>
+        </g>
+        <ellipse cx="48.5" cy="40" rx="1" ry="9" fill="rgba(255,255,255,0.3)"/>
+    </svg>`;
+}
+
+function initButterflies() {
+    const container = document.getElementById('butterflies');
+    if (!container) return;
+
+    // Realistic pastel palettes with light cores + darker edges for depth
+    const palettes = [
+        { foreLight:'#ffe3ef', fore:'#f4a8c4', foreEdge:'#c26f92', hindLight:'#ffeef5', hind:'#f8cfe0', hindEdge:'#d98cae', body:'#7a4a5e', bodyDark:'#4f2f3d', accent:'#9a6076' }, // blush pink
+        { foreLight:'#f1e6ff', fore:'#c9a8ec', foreEdge:'#8f6fbf', hindLight:'#f6eeff', hind:'#e2d0f7', hindEdge:'#a488c8', body:'#5a4574', bodyDark:'#3a2b4d', accent:'#725c8f' }, // lavender
+        { foreLight:'#fff3d6', fore:'#f4cf88', foreEdge:'#c99a4e', hindLight:'#fff8e6', hind:'#fbe6bf', hindEdge:'#d8b673', body:'#7a5f2e', bodyDark:'#4f3d1a', accent:'#9a7a3e' }, // amber gold
+        { foreLight:'#e2fff2', fore:'#a5e0c8', foreEdge:'#5fae90', hindLight:'#effef8', hind:'#cfefe2', hindEdge:'#7fbea3', body:'#2e5f49', bodyDark:'#1a3d2c', accent:'#3e7a5e' }, // mint
+        { foreLight:'#e6f0ff', fore:'#a8c4f0', foreEdge:'#6f8fc4', hindLight:'#f0f6ff', hind:'#d0e0fa', hindEdge:'#88a4d0', body:'#2e4574', bodyDark:'#1a2b4d', accent:'#3e5c8f' }, // powder blue
+        { foreLight:'#ffe6e0', fore:'#f4a898', foreEdge:'#c2705e', hindLight:'#fff0ec', hind:'#f8cfc4', hindEdge:'#d98c78', body:'#7a3f2e', bodyDark:'#4f271a', accent:'#9a5640' }, // coral peach
+    ];
+
+    const count = 7;
+    for (let i = 0; i < count; i++) {
+        createButterfly(container, palettes, i);
+    }
+}
+
+let __bfUid = 0;
+function createButterfly(container, palettes, index) {
+    const wrap = document.createElement('div');
+    wrap.classList.add('butterfly');
+
+    const pal = palettes[Math.floor(Math.random() * palettes.length)];
+    wrap.innerHTML = butterflySVG(pal, ++__bfUid);
+
+    const size = Math.random() * 20 + 28;       // 28–48px
+    const startTop = Math.random() * 80 + 5;     // 5–85% vertical
+    const duration = Math.random() * 14 + 18;    // 18–32s to cross
+    const delay = Math.random() * 14;
+    const flapDur = (Math.random() * 0.14 + 0.16).toFixed(2); // 0.16–0.30s
+    const dir = Math.random() > 0.5 ? 1 : -1;
+    // 3D viewing angle: pitch it toward the viewer (side/low angle) + a little yaw
+    const tilt = Math.round(Math.random() * 16 + 50);  // 50–66deg pitch
+    const yaw = Math.round(Math.random() * 32 - 16);   // -16 to +16deg yaw
+
+    wrap.style.cssText = `
+        width: ${size}px;
+        height: ${size * 0.9}px;
+        top: ${startTop}%;
+        animation-duration: ${duration}s;
+        animation-delay: ${delay}s;
+        --flap-dur: ${flapDur}s;
+        --bf-tilt: ${tilt}deg;
+        --bf-yaw: ${yaw}deg;
+    `;
+    wrap.classList.add(dir === 1 ? 'bf-fly-right' : 'bf-fly-left');
+
+    container.appendChild(wrap);
+}
+
 /* ============ SPARKLE PARTICLES ============ */
 
 function initSparkles() {
@@ -330,7 +467,7 @@ function initScrollReveal() {
 
     // Reveal sections on scroll
     const sections = document.querySelectorAll(
-        '.countdown-section, .quote-section, .venue-section, .actions-section, .footer'
+        '.countdown-section, .quote-section, .venue-section, .actions-section, .rsvp-section, .footer'
     );
 
     sections.forEach(section => {
