@@ -135,6 +135,289 @@ body::before {
     50% { transform: rotate(-0.8deg) scale(1.01); }
 }
 
+/* ---- Individual flower & leaf sway animations ---- */
+
+/* Gentle breeze sway for roses */
+@keyframes flowerSway1 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(2px, -3px) rotate(1.5deg); }
+    50% { transform: translate(-1px, -5px) rotate(-1deg); }
+    75% { transform: translate(3px, -2px) rotate(2deg); }
+}
+
+@keyframes flowerSway2 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    30% { transform: translate(-3px, -2px) rotate(-2deg); }
+    60% { transform: translate(2px, -4px) rotate(1.5deg); }
+    80% { transform: translate(-1px, -1px) rotate(-0.5deg); }
+}
+
+@keyframes flowerSway3 {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    20% { transform: translate(1px, -4px) rotate(2deg); }
+    50% { transform: translate(-2px, -2px) rotate(-1.5deg); }
+    70% { transform: translate(3px, -3px) rotate(1deg); }
+}
+
+/* Leaf flutter */
+@keyframes leafFlutter1 {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(4deg) scale(1.03); }
+    50% { transform: rotate(-2deg) scale(0.98); }
+    75% { transform: rotate(3deg) scale(1.02); }
+}
+
+@keyframes leafFlutter2 {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    30% { transform: rotate(-5deg) scale(1.04); }
+    60% { transform: rotate(3deg) scale(0.97); }
+    85% { transform: rotate(-2deg) scale(1.01); }
+}
+
+/* Bud gentle bob */
+@keyframes budBob {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-4px) scale(1.05); }
+}
+
+/* Gold dot twinkle */
+@keyframes dotTwinkle {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.4); }
+}
+
+/* Vine gentle wave */
+@keyframes vineWave {
+    0%, 100% { stroke-dashoffset: 0; }
+    50% { stroke-dashoffset: 8; }
+}
+
+/* --- Side corner floral animations (bg-decor) --- */
+
+/* Roses in corner SVGs - target the <g> groups with translate transforms */
+.decor-corner g[transform*="translate(40,90)"],
+.decor-corner g[transform*="translate(310,90)"] {
+    animation: flowerSway1 6s ease-in-out infinite;
+}
+
+.decor-corner g[transform*="translate(60,230)"],
+.decor-corner g[transform*="translate(290,230)"] {
+    animation: flowerSway2 7s ease-in-out infinite 0.5s;
+}
+
+.decor-corner g[transform*="translate(45,370)"],
+.decor-corner g[transform*="translate(305,370)"] {
+    animation: flowerSway3 8s ease-in-out infinite 1s;
+}
+
+/* Buds */
+.decor-corner g[transform*="translate(20,160)"],
+.decor-corner g[transform*="translate(330,160)"] {
+    animation: budBob 4s ease-in-out infinite 0.8s;
+}
+
+/* Leaves in corner SVGs */
+.decor-corner g[fill="#7ba05b"] path:nth-child(odd) {
+    animation: leafFlutter1 5s ease-in-out infinite;
+}
+
+.decor-corner g[fill="#7ba05b"] path:nth-child(even) {
+    animation: leafFlutter2 6s ease-in-out infinite 0.3s;
+}
+
+/* Gold dots twinkle */
+.decor-corner circle[fill="#d4af37"] {
+    animation: dotTwinkle 3s ease-in-out infinite;
+}
+
+.decor-corner circle[fill="#d4af37"]:nth-of-type(2) {
+    animation-delay: 0.5s;
+}
+
+.decor-corner circle[fill="#d4af37"]:nth-of-type(3) {
+    animation-delay: 1s;
+}
+
+.decor-corner circle[fill="#d4af37"]:nth-of-type(4) {
+    animation-delay: 1.5s;
+}
+
+/* Small buds (circles with pink/purple fill) */
+.decor-corner > circle[fill="#f0a0b8"] {
+    animation: budBob 5s ease-in-out infinite 0.2s;
+}
+
+.decor-corner > circle[fill="#d4a0d0"] {
+    animation: budBob 5.5s ease-in-out infinite 0.7s;
+}
+
+/* Bottom corner roses */
+.decor-corner g[transform*="translate(40,200)"],
+.decor-corner g[transform*="translate(260,200)"] {
+    animation: flowerSway1 7s ease-in-out infinite 0.3s;
+}
+
+.decor-corner g[transform*="translate(70,100)"],
+.decor-corner g[transform*="translate(230,100)"] {
+    animation: flowerSway2 6s ease-in-out infinite 0.6s;
+}
+
+/* --- Inner card floral animations --- */
+
+.card-floral {
+    position: absolute;
+    pointer-events: none;
+    width: 180px;
+    height: 180px;
+}
+
+.card-floral-tl {
+    top: -10px;
+    left: -10px;
+    animation: cardFloralSwayTL 8s ease-in-out infinite;
+}
+
+.card-floral-tr {
+    top: -10px;
+    right: -10px;
+    animation: cardFloralSwayTR 9s ease-in-out infinite 0.5s;
+}
+
+.card-floral-bl {
+    bottom: -10px;
+    left: -10px;
+    animation: cardFloralSwayBL 10s ease-in-out infinite 1s;
+}
+
+.card-floral-br {
+    bottom: -10px;
+    right: -10px;
+    animation: cardFloralSwayBR 8.5s ease-in-out infinite 1.5s;
+}
+
+@keyframes cardFloralSwayTL {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(3px, 2px) rotate(1.5deg); }
+    50% { transform: translate(-2px, 4px) rotate(-1deg); }
+    75% { transform: translate(2px, 1px) rotate(0.5deg); }
+}
+
+@keyframes cardFloralSwayTR {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-3px, 2px) rotate(-1.5deg); }
+    50% { transform: translate(2px, 4px) rotate(1deg); }
+    75% { transform: translate(-2px, 1px) rotate(-0.5deg); }
+}
+
+@keyframes cardFloralSwayBL {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(3px, -2px) rotate(1deg); }
+    50% { transform: translate(-2px, -4px) rotate(-1.5deg); }
+    75% { transform: translate(1px, -1px) rotate(0.5deg); }
+}
+
+@keyframes cardFloralSwayBR {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(-3px, -2px) rotate(-1deg); }
+    50% { transform: translate(2px, -4px) rotate(1.5deg); }
+    75% { transform: translate(-1px, -1px) rotate(-0.5deg); }
+}
+
+/* Inner card rose/bud animations */
+.card-floral g[transform*="translate(45,50)"],
+.card-floral g[transform*="translate(155,50)"] {
+    animation: flowerSway1 7s ease-in-out infinite;
+}
+
+.card-floral g[transform*="translate(45,155)"],
+.card-floral g[transform*="translate(155,155)"] {
+    animation: flowerSway2 8s ease-in-out infinite 0.4s;
+}
+
+.card-floral g[transform*="translate(90,35)"],
+.card-floral g[transform*="translate(110,35)"] {
+    animation: budBob 5s ease-in-out infinite 0.6s;
+}
+
+.card-floral g[transform*="translate(25,100)"],
+.card-floral g[transform*="translate(175,100)"],
+.card-floral g[transform*="translate(80,170)"],
+.card-floral g[transform*="translate(120,170)"] {
+    animation: budBob 4.5s ease-in-out infinite 0.3s;
+}
+
+/* Inner card leaves */
+.card-floral path[fill="#7ba05b"]:nth-of-type(odd) {
+    animation: leafFlutter1 6s ease-in-out infinite;
+}
+
+.card-floral path[fill="#7ba05b"]:nth-of-type(even) {
+    animation: leafFlutter2 7s ease-in-out infinite 0.5s;
+}
+
+/* Inner card gold dots */
+.card-floral circle[fill="#d4af37"] {
+    animation: dotTwinkle 3.5s ease-in-out infinite 0.3s;
+}
+
+/* Card center glow gentle pulse */
+.card-center-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70%;
+    height: 50%;
+    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.55) 0%, rgba(253, 248, 242, 0.25) 50%, transparent 80%);
+    border-radius: 50%;
+    animation: centerGlowPulse 6s ease-in-out infinite;
+}
+
+@keyframes centerGlowPulse {
+    0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.05); }
+}
+
+/* --- Envelope screen floral animations --- */
+
+.env-floral g {
+    animation: flowerSway1 6s ease-in-out infinite;
+}
+
+.env-floral-tr g {
+    animation: flowerSway2 7s ease-in-out infinite 0.3s;
+}
+
+.env-floral-bl g {
+    animation: flowerSway3 8s ease-in-out infinite 0.7s;
+}
+
+.env-floral-br g {
+    animation: flowerSway2 7.5s ease-in-out infinite 1s;
+}
+
+.env-floral path[fill="#7ba05b"] {
+    animation: leafFlutter1 5s ease-in-out infinite;
+}
+
+.env-floral-tr path[fill="#7ba05b"],
+.env-floral-br path[fill="#7ba05b"] {
+    animation: leafFlutter2 5.5s ease-in-out infinite 0.4s;
+}
+
+.env-floral circle[fill="#d4af37"] {
+    animation: dotTwinkle 3s ease-in-out infinite;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .decor-corner g, .card-floral g, .env-floral g,
+    .decor-corner circle, .card-floral path, .env-floral path,
+    .card-floral, .card-center-glow {
+        animation: none !important;
+    }
+}
+
 /* ============ SVG ICON STYLES ============ */
 
 .icon-svg {
@@ -663,44 +946,6 @@ body::before {
     height: 100%;
     pointer-events: none;
     z-index: 0;
-}
-
-.card-floral {
-    position: absolute;
-    pointer-events: none;
-    width: 180px;
-    height: 180px;
-}
-
-.card-floral-tl {
-    top: -10px;
-    left: -10px;
-}
-
-.card-floral-tr {
-    top: -10px;
-    right: -10px;
-}
-
-.card-floral-bl {
-    bottom: -10px;
-    left: -10px;
-}
-
-.card-floral-br {
-    bottom: -10px;
-    right: -10px;
-}
-
-.card-center-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 70%;
-    height: 50%;
-    background: radial-gradient(ellipse, rgba(255, 255, 255, 0.55) 0%, rgba(253, 248, 242, 0.25) 50%, transparent 80%);
-    border-radius: 50%;
 }
 
 /* Ensure all content sits above the card-bg layer */
