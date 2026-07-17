@@ -128,7 +128,7 @@ function animateHero() {
 
 function initPetals() {
     const container = document.getElementById('petals');
-    const petalSymbols = ['🌸', '✿', '❀', '🩷', '💮', '🪷'];
+    const petalSymbols = ['🌸', '✿', '❀', '🩷', '💮'];
     const petalCount = 12;
 
     for (let i = 0; i < petalCount; i++) {
