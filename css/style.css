@@ -981,9 +981,10 @@ body::before {
 
 .name {
     font-family: var(--font-display);
-    font-size: 3rem;
+    font-size: clamp(2.4rem, 11vw, 3rem);
     color: var(--royal-purple);
-    line-height: 1.3;
+    line-height: 1.15;
+    white-space: nowrap;
     opacity: 0;
     transform: translateY(25px);
     text-shadow: 0 2px 10px rgba(92, 61, 110, 0.1);
@@ -1008,6 +1009,20 @@ body::before {
     opacity: 0;
     transform: scale(0.3) rotate(-10deg);
     text-shadow: 0 2px 8px rgba(201, 169, 110, 0.3);
+}
+
+.amp-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 2px 0;
+}
+
+.amp-sprig {
+    width: 55px;
+    height: 22px;
+    opacity: 0;
 }
 
 .ampersand.animate {
@@ -1480,7 +1495,7 @@ body::before {
     }
 
     .name {
-        font-size: 3.5rem;
+        font-size: clamp(2.8rem, 9vw, 3.5rem);
     }
 
     .actions {
@@ -1524,7 +1539,7 @@ body::before {
     }
 
     .name {
-        font-size: 4.2rem;
+        font-size: clamp(3.5rem, 8vw, 4.2rem);
     }
 
     .ampersand {

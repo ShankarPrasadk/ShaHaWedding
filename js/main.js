@@ -174,6 +174,11 @@ function animateHero() {
         duration: 0.8,
         ease: 'back.out(1.7)'
     }, '-=0.5')
+    .to('.amp-sprig', {
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power2.out'
+    }, '-=0.3')
     .to('.name.bride', {
         opacity: 1,
         y: 0,
